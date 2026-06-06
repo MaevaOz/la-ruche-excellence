@@ -157,6 +157,6 @@ app.post("/admin", requireAuth, async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-    console.log(`Serveur en ligne sur le port ${PORT}`);
+app.listen(process.env.PORT, process.env.IP, () => {
+    console.log("Serveur démarré");
 });
