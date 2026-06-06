@@ -626,8 +626,14 @@ footer {
 }
 
 /* ==========================================================================
-   ZONE ÉTANCHE MOBILE - MENU FLOTTANT & ANTI-ÉCRASEMENT (MaEkia Studio)
+   ZONE ÉTANCHE MOBILE - CONFIGURATION BURGER HACK (MaEkia Studio)
    ========================================================================== */
+
+/* Sécurité sur ordinateur : on cache le bouton burger par défaut */
+.burger-checkbox, .burger-label {
+    display: none;
+}
+
 @media (max-width: 768px) {
     
     /* 1. Sécurité anti-débordement pour bloquer l'écran bien droit */
@@ -638,7 +644,7 @@ footer {
         padding: 0 !important;
     }
 
-    /* 2. LA NAVBAR & LE MENU DÉROULANT FLOTTANT */
+    /* 2. LA NAVBAR & LE MENU DÉROULANT FLOTTANT (Version Burger Hack) */
     .navbar {
         position: relative !important; /* Sort du mode fixe pour ne pas chevaucher le contenu */
         display: flex !important;
@@ -649,8 +655,24 @@ footer {
         height: auto !important;
     }
 
+    /* Affichage et style de l'icône burger (les 3 barres horizontales) */
+    .burger-label {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+        cursor: pointer !important;
+        z-index: 10000 !important;
+    }
+
+    .burger-label span {
+        display: block !important;
+        width: 25px !important;
+        height: 3px !important;
+        background-color: var(--bleu-abyssal) !important;
+        transition: all 0.3s ease !important;
+    }
+
     /* Les liens deviennent une liste déroulante FLOTTANTE (Absolute) */
-    /* Elle s'affiche AU-DESSUS du contenu sans jamais décaler le reste du site */
     .nav-links {
         display: none !important; /* Masqué par défaut */
         position: absolute !important;
@@ -666,10 +688,20 @@ footer {
         z-index: 9999 !important;
     }
 
-    /* Déclencheur magique en pur CSS : quand on tapote ou survole la navbar, le menu descend */
-    .navbar:hover .nav-links,
-    .navbar:focus-within .nav-links {
+    /* LA CLÉ DU HACK : Quand la case invisible est cochée, on affiche le menu */
+    .burger-checkbox:checked ~ .nav-links {
         display: flex !important;
+    }
+
+    /* Effet visuel : Transformation des 3 barres en "X" quand le menu est ouvert */
+    .burger-checkbox:checked ~ .burger-label span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px) !important;
+    }
+    .burger-checkbox:checked ~ .burger-label span:nth-child(2) {
+        opacity: 0 !important;
+    }
+    .burger-checkbox:checked ~ .burger-label span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px) !important;
     }
 
     .nav-link {
@@ -694,17 +726,15 @@ footer {
     }
 
     /* 3. LE TEXTE VERTICAL RÉGLÉ (Page Produit, Équipe et Grilles) */
-    /* On brise de force le système Grid d'ordinateur qui emprisonnait tes colonnes */
     .product-detail-layout, .grid, .footer-grid {
         display: flex !important;
-        flex-direction: column !important; /* Force l'empilement vertical propre */
+        flex-direction: column !important;
         align-items: stretch !important;
         width: 100% !important;
         max-width: 100% !important;
         gap: 3rem !important;
     }
 
-    /* Le bloc de texte et les fiches d'équipe récupèrent 100% de la largeur pour respirer */
     .product-detail-layout > div,
     .grid > div,
     .footer-grid > div {
@@ -714,7 +744,6 @@ footer {
         white-space: normal !important;
     }
 
-    /* Le carré blanc de conversion se place sagement en dessous, centré */
     .conversion-block {
         position: relative !important;
         top: 0 !important;

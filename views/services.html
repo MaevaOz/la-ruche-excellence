@@ -16,7 +16,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     <meta name="description" data-attr="content:meta.description">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css?v=3.0">
     <script src="/app.js" defer></script>
 </head>
 <body>
@@ -24,6 +24,14 @@
         <a href="/" class="nav-logo">
             <span data-content="nav.logo.text_principal" style="color: var(--bleu-abyssal)"></span><span data-content="nav.logo.sub"></span>
         </a>
+
+        <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+        <label for="burger-toggle" class="burger-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
         <div class="nav-links" data-list="nav.links" data-item="link">
             <template>
                 <a class="nav-link" data-attr="href:link.url" data-content="link.label"></a>
