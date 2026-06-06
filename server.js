@@ -157,4 +157,6 @@ app.post("/admin", requireAuth, async (req, res) => {
   }
 });
 
-app.listen(PORT, "0.0.0.0", () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Serveur en ligne sur le port ${PORT}`);
+});
