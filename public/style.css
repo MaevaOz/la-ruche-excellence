@@ -624,3 +624,58 @@ footer {
     top: 0;
   }
 }
+
+/* ==========================================================================
+   CORRECTEUR RESPONSIVE GLOBAL (MaEkia Studio)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. On force l'alignement vertical et on supprime les largeurs fixes */
+    html, body, main, section, .container, div, article, aside {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        float: none !important;
+    }
+
+    /* 2. On casse les lignes Flexbox/Grid pour empiler les éléments en colonne */
+    header, footer, .row, .flex, .grid, form, .product-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+
+    /* 3. Correction du texte écrasé (Page Produit Détail) */
+    h1, h2, h3, p, span {
+        width: 100% !important;
+        text-align: center !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    /* 4. Fix pour les cartes volantes / formulaires qui débordent (Contact & Admin) */
+    .floating-card, .card, input, textarea, select, button, .btn {
+        position: relative !important; /* Repasse dans le flux normal */
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 10px 0 !important;
+    }
+
+    /* 5. Nettoyage rapide de l'en-tête (Logo au-dessus du bouton) */
+    header {
+        padding: 15px !important;
+    }
+    header img, .logo {
+        max-width: 200px !important;
+        height: auto !important;
+    }
+    nav ul {
+        flex-direction: column !important;
+        padding: 0 !important;
+    }
+}
