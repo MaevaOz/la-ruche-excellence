@@ -626,11 +626,11 @@ footer {
 }
 
 /* ==========================================================================
-   REFONTE MOBILE FLUIDE & NAVIGATION ACTIVE - MAEKIA STUDIO
+   ZONE ÉTANCHE MOBILE - MENU FLOTTANT & ANTI-ÉCRASEMENT (MaEkia Studio)
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* Sécurité anti-débordement horizontal */
+    /* 1. Sécurité anti-débordement pour bloquer l'écran bien droit */
     html, body {
         overflow-x: hidden !important;
         width: 100% !important;
@@ -638,50 +638,54 @@ footer {
         padding: 0 !important;
     }
 
-    /* 1. LA NAVIGATION (.navbar) - ON FORCE L'AFFICHAGE DES LIENS */
+    /* 2. LA NAVBAR & LE MENU DÉROULANT FLOTTANT */
     .navbar {
-        position: static !important; /* Libère la position fixe pour laisser le contenu respirer */
+        position: relative !important; /* Sort du mode fixe pour ne pas chevaucher le contenu */
         display: flex !important;
-        flex-direction: column !important; /* Empile : Logo -> Liens -> Bouton */
+        flex-direction: row !important; /* Garde le logo et le bouton alignés sur la même ligne */
+        justify-content: space-between !important;
         align-items: center !important;
-        gap: 1.5rem !important;
-        padding: 1.5rem 1rem !important;
-        width: 100% !important;
+        padding: 1rem 5% !important;
         height: auto !important;
     }
 
-    .nav-logo {
-        font-size: 1.6rem !important;
-        text-align: center !important;
+    /* Les liens deviennent une liste déroulante FLOTTANTE (Absolute) */
+    /* Elle s'affiche AU-DESSUS du contenu sans jamais décaler le reste du site */
+    .nav-links {
+        display: none !important; /* Masqué par défaut */
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: var(--ecru) !important;
+        flex-direction: column !important;
+        padding: 2rem 0 !important;
+        gap: 1.5rem !important;
+        border-bottom: 1px solid var(--or-rgba) !important;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+        z-index: 9999 !important;
     }
 
-    /* FORCE l'affichage des liens de navigation à la verticale au lieu de les cacher */
-    .nav-links {
-        display: flex !important; /* Écrase le 'none' d'origine */
-        flex-direction: column !important; /* Aligne les liens les uns sous les autres */
-        gap: 1rem !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 0 !important;
+    /* Déclencheur magique en pur CSS : quand on tapote ou survole la navbar, le menu descend */
+    .navbar:hover .nav-links,
+    .navbar:focus-within .nav-links {
+        display: flex !important;
     }
 
     .nav-link {
-        font-size: 0.9rem !important;
-        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 1rem !important;
         padding: 0.5rem 0 !important;
     }
 
     .btn-audit {
-        width: 100% !important;
-        max-width: 290px !important;
-        text-align: center !important;
-        padding: 0.8rem 1.5rem !important;
-        margin-top: 0.5rem !important;
+        padding: 0.6rem 1.2rem !important;
+        font-size: 0.75rem !important;
     }
 
-    /* 2. LE HERO & LES SECTIONS */
     .hero {
-        padding: 3rem 1rem 3rem !important;
+        padding: 4rem 5% 3rem !important;
         min-height: auto !important;
     }
 
@@ -689,71 +693,56 @@ footer {
         font-size: 2.2rem !important;
     }
 
-    .section {
-        padding: 4rem 5% !important;
-    }
-
-    .grid, .footer-grid {
-        grid-template-columns: 1fr !important; /* Une seule colonne propre */
-        gap: 2rem !important;
-    }
-
-    /* 3. PAGE PRODUIT DÉTAILLÉ (.product-detail-layout) */
-    .product-detail-layout {
+    /* 3. LE TEXTE VERTICAL RÉGLÉ (Page Produit, Équipe et Grilles) */
+    /* On brise de force le système Grid d'ordinateur qui emprisonnait tes colonnes */
+    .product-detail-layout, .grid, .footer-grid {
         display: flex !important;
-        flex-direction: column !important;
-        gap: 2.5rem !important;
-    }
-
-    .product-detail-layout > div {
+        flex-direction: column !important; /* Force l'empilement vertical propre */
+        align-items: stretch !important;
         width: 100% !important;
         max-width: 100% !important;
+        gap: 3rem !important;
     }
 
+    /* Le bloc de texte et les fiches d'équipe récupèrent 100% de la largeur pour respirer */
+    .product-detail-layout > div,
+    .grid > div,
+    .footer-grid > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        white-space: normal !important;
+    }
+
+    /* Le carré blanc de conversion se place sagement en dessous, centré */
     .conversion-block {
-        position: relative !important; /* Annule le mode collant d'ordinateur */
+        position: relative !important;
         top: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
         padding: 2.5rem 1.5rem !important;
-        box-shadow: 0 10px 30px -10px var(--abyssal-rgba) !important;
-        box-sizing: border-box !important;
         margin-top: 2rem !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 15px 35px var(--abyssal-rgba) !important;
     }
 
     .product-price {
-        font-size: 2.6rem !important;
+        font-size: 2.8rem !important;
     }
 
-    /* 4. FORMULAIRE DE CONTACT (.contact-form) */
+    /* 4. FORMULAIRE DE CONTACT & INPUTS */
     .contact-form {
         display: flex !important;
         flex-direction: column !important;
         gap: 1.5rem !important;
+    }
+
+    .form-input, .form-textarea, .search-input {
         width: 100% !important;
+        box-sizing: border-box !important;
     }
 
-    .form-group {
-        width: 100% !important;
-    }
-
-    .form-input, 
-    .form-textarea, 
-    .search-input {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important; 
-    }
-
-    /* 5. LE FOOTER */
-    footer {
-        padding: 4rem 5% 2rem !important;
-    }
-
-    .footer-logo {
-        font-size: 2rem !important;
-    }
-
+    /* 5. FOOTER */
     .footer-bottom {
         flex-direction: column !important;
         gap: 1.5rem !important;
