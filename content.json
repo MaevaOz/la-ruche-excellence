@@ -1,0 +1,597 @@
+{
+  "meta": {
+    "title": "La Ruche Excellence — Votre Protection, Notre Excellence au Gabon",
+    "google_site_verification": "vrUY82Oof8X0qxyJRJZ6_U2dOsV0RLaRuche",
+    "description": "Rendre l'assurance accessible à tous depuis 1995. Découvrez nos solutions d'assurance innovantes adaptées à vos besoins au Gabon. Plus de 25 ans d'expertise à votre service.",
+    "keywords": "courtage assurance gabon, assurance auto libreville, mutuelle sante gabon, la ruche excellence",
+    "author": "MaEkia Studio",
+    "theme_color": "#0d1b2a",
+    "canonical": "https://la-ruche-excellence.onrender.com/",
+    "og": {
+      "locale": "fr_FR",
+      "type": "website",
+      "site_name": "La Ruche Excellence",
+      "title": "La Ruche Excellence — Votre Protection, Notre Excellence",
+      "description": "Découvrez notre gamme complète de solutions d'assurance adaptées à vos besoins au Gabon.",
+      "url": "https://la-ruche-excellence.onrender.com/",
+      "image": "https://la-ruche-excellence.onrender.com/assets/og-image.jpg"
+    }
+  },
+  "nav": {
+    "logo": {
+      "text_principal": "La Ruche",
+      "sub": "Excellence"
+    },
+    "links": [
+      {
+        "label": "Accueil",
+        "url": "/"
+      },
+      {
+        "label": "L'Entreprise",
+        "url": "/about"
+      },
+      {
+        "label": "Nos Produits",
+        "url": "/products"
+      },
+      {
+        "label": "Nos Services",
+        "url": "/services"
+      },
+      {
+        "label": "Blog",
+        "url": "/blog"
+      },
+      {
+        "label": "Contact",
+        "url": "/contact"
+      }
+    ]
+  },
+  "hero": {
+    "eyebrow": "Excellence • Conseil • Accompagnement",
+    "title_html": "Votre Protection, <span class='text-gold'>Notre Excellence</span>",
+    "sub": "Rendre l'assurance accessible à tous depuis 1995. Découvrez nos solutions d'assurance innovantes adaptées à vos besoins au Gabon. Plus de 25 ans d'expertise à votre service.",
+    "promise": "Bénéficiez dès aujourd'hui d'un audit complet de vos polices d'assurance en cours.",
+    "ctas": [
+      {
+        "label": "Découvrir nos offres",
+        "url": "/products",
+        "class": "btn-gold"
+      },
+      {
+        "label": "Demander un devis",
+        "url": "/contact",
+        "class": "btn-outline"
+      }
+    ],
+    "stats": [
+      {
+        "num": "25+ Ans",
+        "label": "d'expertise au Gabon"
+      },
+      {
+        "num": "10,000+",
+        "label": "clients satisfaits"
+      },
+      {
+        "num": "25",
+        "label": "solutions d'assurance"
+      }
+    ],
+    "float_card": {
+      "num": "95%",
+      "label": "Taux de satisfaction globale de notre clientèle exigeante"
+    }
+  },
+  "for_who": {
+    "eyebrow": "La confiance en chiffres",
+    "title_html": "Depuis 1995, nous bâtissons une <span class='text-gold'>relation de confiance</span>",
+    "cards": [
+      "10 000+ Clients protégés et accompagnés au quotidien sur l'ensemble du territoire gabonais.",
+      "25 Années d'expérience active, d'ancrage institutionnel et de maîtrise des risques au Gabon.",
+      "95% Taux de satisfaction globale et de fidélité de notre clientèle exigeante.",
+      "24/7 Support technique et assistance d'urgence disponible en cas de sinistre majeur."
+    ]
+  },
+  "about": {
+    "badge": {
+      "strong": "Notre Mission",
+      "span": "& Engagements",
+     "sub" : "Rendre l'assurance accessible, transparente et adaptée aux réalités locales"
+    },
+    "eyebrow": "L'Entreprise",
+    "title_html": "L'Excellence au service de <span class='text-gold'>votre protection</span>",
+    "paragraphs": [
+      "Depuis 1995, La Ruche Excellence accompagne les particuliers et entreprises du Gabon.",
+      "Rendre l'assurance accessible, transparente et adaptée aux réalités locales. Depuis notre création en 1995, La Ruche Excellence s'est imposée comme un acteur majeur de l'assurance au Gabon. Notre mission est de démocratiser l'accès à l'assurance en proposing des solutions transparentes, abordables et parfaitement adaptées aux réalités gabonaises."
+    ],
+    "values": [
+      {
+        "strong": "Excellence",
+        "span": "Nous visons l'excellence dans chaque service que nous offrons, avec un souci du détail constant."
+      },
+      {
+        "strong": "Proximité",
+        "span": "Nous privilégions une relation humaine et personnalisée avec chacun de nos clients."
+      },
+      {
+        "strong": "Adaptabilité",
+        "span": "Nos solutions s'adaptent aux réalités locales et aux besoins spécifiques du Gabon."
+      },
+      {
+        "strong": "Innovation",
+        "span": "Nous intégrons les dernières technologies pour simplifier vos démarches d'assurance."
+      }
+    ],
+    "signature": {
+      "name": "MaEkia Studio",
+      "role": "Architecture CMS"
+    }
+  },
+  "proof": {
+    "title_html": "Une équipe d'experts <span class='text-gold'>à votre service</span>",
+    "cards": [
+      {
+        "strong": "Alain MBENG",
+        "p": "Directeur Général — Rencontrez les professionnels passionnés qui vous accompagnent."
+      },
+      {
+        "strong": "Marie NGUEMA",
+        "p": "Directrice Commerciale — À votre écoute pour concevoir des offres sur-mesure."
+      },
+      {
+        "strong": "Jean OBAMA",
+        "p": "Responsable Sinistres — Votre interlocuteur dédié pour une défense intransigeante."
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "Notre histoire",
+    "title_html": "Notre parcours en <span class='text-gold'>quelques dates</span>",
+    "sub": "Une évolution constante au service de la sécurité financière des Gabonais.",
+    "steps": [
+      {
+        "num": "1995",
+        "title": "Création de La Ruche Excellence",
+        "desc": "Lancement de notre activité de courtage avec une vision : rendre l'assurance accessible à tous.",
+        "tag": "Fondation"
+      },
+      {
+        "num": "2005",
+        "title": "Expansion régionale",
+        "desc": "Ouverture de nouvelles agences dans les principales villes du Gabon.",
+        "tag": "Déploiement"
+      },
+      {
+        "num": "2015",
+        "title": "Transformation digitale",
+        "desc": "Lancement de notre plateforme en ligne et digitalisation complète de nos services.",
+        "tag": "Innovation"
+      },
+      {
+        "num": "2025",
+        "title": "Leader du marché",
+        "desc": "Plus de 10 000 clients nous font confiance avec un catalogue étendu de 25 solutions.",
+        "tag": "Excellence"
+      }
+    ],
+    "visual_cards": {
+      "manage": "Inclus : Diagnostic de risques complet, assistance prioritaire 24h/7j et médiation dédiée.",
+      "need": "À prévoir : Conditions particulières de vos polices en cours et relevés d'informations de sinistralité.",
+      "delays_tag": "Disponibilité",
+      "delays_html": "Votre cartographie des risques et devis comparatif finalisés sous <strong>24 heures</strong>.",
+      "payment_title": "Rémunération",
+      "payment_desc": "Nos analyses et audits préalables sont totalement gratuits pour nos mandants."
+    }
+  },
+  "portfolio": {
+    "eyebrow": "Nos Solutions d'Assurance",
+    "title_html": "Une protection sur mesure <span class='text-gold'>pour chaque besoin</span>",
+    "sub": "Découvrez notre gamme complète de produits adaptés à vos besoins. Conçus pour s'adapter parfaitement à votre situation personnelle ou professionnelle.",
+    "search_placeholder": "Rechercher un produit...",
+    "sectors": [
+      "Tous",
+      "Automobile",
+      "Santé",
+      "Vie",
+      "Biens",
+      "Entreprise"
+    ],
+    "view_details_label": "En savoir plus",
+    "tabs": {
+      "details": "Détails",
+      "garanties": "Garanties",
+      "documents": "Documents"
+    },
+    "cima_disclaimer_html": "Garanties conformes aux réglementations de la Conférence Interafricaine des Marchés d'Assurances (CIMA).",
+    "labels": {
+      "on_quote": "Tarifs Compétitifs",
+      "price_note_html": "par mois"
+    },
+    "items": [
+      {
+        "url": "/products/1",
+        "img": "/assets/auto-essentielle.jpg",
+        "class_color": "bg-navy",
+        "sector": "Automobile",
+        "name": "Assurance Auto Essentielle",
+        "desc": "Protection de base pour votre véhicule avec responsabilité civile obligatoire, défense pénale et assistance.",
+        "tag": "Souscrire →",
+        "price": "25 000 FCFA",
+        "garanties": [
+          "Responsabilité civile",
+          "Défense pénale",
+          "Assistance dépannage"
+        ],
+        "documents": [
+          "Conditions générales",
+          "Notice d'information",
+          "Fiche standardisée d'information"
+        ]
+      },
+      {
+        "url": "/products/2",
+        "img": "/assets/auto-premium.jpg",
+        "class_color": "bg-gold",
+        "sector": "Automobile",
+        "name": "Assurance Auto Premium",
+        "desc": "L'Assurance Auto Premium est notre formule tous risques la plus protectrice : elle couvre votre véhicule contre les collisions, le vol, l'incendie et le bris de glace, avec véhicule de remplacement et assistance 24h/24. Conçue pour les conducteurs exigeants au Gabon.",
+        "tag": "Souscrire →",
+        "price": "45 000 FCFA",
+        "garanties": [
+          "Tous risques",
+          "Vol et incendie",
+          "Bris de glace",
+          "Véhicule de remplacement"
+        ],
+        "documents": [
+          "Conditions générales",
+          "Notice d'information",
+          "Fiche standardisée d'information"
+        ]
+      },
+      {
+        "url": "/products/3",
+        "img": "/assets/sante-famille.jpg",
+        "class_color": "bg-navy",
+        "sector": "Santé",
+        "name": "Mutuelle Santé Famille",
+        "desc": "La Mutuelle Santé Famille prend en charge consultations, hospitalisation, pharmacie, optique et soins dentaires pour l'ensemble de votre foyer. Un accompagnement santé complet et accessible, adapté aux familles gabonaises.",
+        "tag": "Souscrire →",
+        "price": "35 000 FCFA",
+        "garanties": [
+          "Consultations",
+          "Hospitalisation",
+          "Pharmacie",
+          "Optique",
+          "Dentaire"
+        ],
+        "documents": [
+          "Conditions générales",
+          "Notice d'information",
+          "Fiche standardisée d'information"
+        ]
+      },
+      {
+        "url": "/products/4",
+        "img": "/assets/habitation-confort.jpg",
+        "class_color": "bg-gold",
+        "sector": "Biens",
+        "name": "Assurance Habitation Confort",
+        "desc": "L'Assurance Habitation Confort protège votre logement et vos biens contre l'incendie, le vol, les dégâts des eaux et engage votre responsabilité civile. Une tranquillité d'esprit au quotidien pour les propriétaires et locataires au Gabon.",
+        "tag": "Souscrire →",
+        "price": "18 000 FCFA",
+        "garanties": [
+          "Incendie",
+          "Vol",
+          "Dégâts des eaux",
+          "Responsabilité civile"
+        ],
+        "documents": [
+          "Conditions générales",
+          "Notice d'information",
+          "Fiche standardisée d'information"
+        ]
+      },
+      {
+        "url": "/products/5",
+        "img": "/assets/vie-epargne.jpg",
+        "class_color": "bg-navy",
+        "sector": "Vie",
+        "name": "Assurance Vie Épargne",
+        "desc": "L'Assurance Vie Épargne vous permet de constituer progressivement un capital garanti tout en bénéficiant d'avantages fiscaux. Une solution idéale pour préparer vos projets futurs et protéger vos proches au Gabon.",
+        "tag": "Souscrire →",
+        "price": "50 000 FCFA",
+        "garanties": [
+          "Capital garanti",
+          "Épargne progressive",
+          "Avantages fiscaux"
+        ],
+        "documents": [
+          "Conditions générales",
+          "Notice d'information",
+          "Fiche standardisée d'information"
+        ]
+      },
+      {
+        "url": "/products/6",
+        "img": "/assets/entreprise-pro.jpg",
+        "class_color": "bg-gold",
+        "sector": "Entreprise",
+        "name": "Assurance Entreprise Pro",
+        "desc": "L'Assurance Entreprise Pro couvre vos locaux professionnels, votre responsabilité civile professionnelle, la perte d'exploitation et les cyber-risques. Une protection sur mesure pour pérenniser votre activité au Gabon.",
+        "tag": "Souscrire →",
+        "price": "75 000 FCFA",
+        "garanties": [
+          "Locaux professionnels",
+          "RC professionnelle",
+          "Perte d'exploitation",
+          "Cyber-risques"
+        ],
+        "documents": [
+          "Conditions générales",
+          "Notice d'information",
+          "Fiche standardisée d'information"
+        ]
+      }
+    ],
+    "cta_text": "Prêt à protéger ce qui compte le plus ?",
+    "cta_btn_label": "Demander un devis gratuit →"
+  },
+  "services": {
+    "header": {
+      "eyebrow": "Nos Services d'Excellence",
+      "title_html": "Un accompagnement complet <span class='text-gold'>à votre service</span>",
+      "sub": "Découvrez notre gamme complète de services conçus pour vous offrir la meilleure protection et le meilleur accompagnement possible."
+    },
+    "items": [
+      {
+        "name": "Conseil personnalisé en assurance",
+        "tagline": "Analyse de votre situation, recommandations sur-mesure et explication claire de toutes vos options d'assurance.",
+        "price": "Sur-mesure",
+        "note": "Conseil",
+        "includes": [
+          "Expertise reconnue",
+          "Solutions personnalisées",
+          "Clarté et transparence"
+        ]
+      },
+      {
+        "name": "Recherche des meilleures offres",
+        "tagline": "Mise en concurrence des compagnies d'assurance pour vous obtenir les meilleures conditions tarifaires.",
+        "price": "Optimisé",
+        "note": "Courtage",
+        "includes": [
+          "Gain de temps considérable",
+          "Tarifs avantageux",
+          "Devis comparés"
+        ]
+      },
+      {
+        "name": "Souscription aux contrats d'assurance",
+        "tagline": "Assistance complète dans la constitution de votre dossier, soumission et gestion administrative.",
+        "price": "Inclus",
+        "note": "Gestion",
+        "includes": [
+          "Accompagnement complet",
+          "Simplification des démarches",
+          "Souscription rapide"
+        ]
+      },
+      {
+        "name": "Assistance en cas de sinistre",
+        "tagline": "Aide à la déclaration, suivi personnalisé et rôle de médiateur pour accélérer le règlement.",
+        "price": "Réactif",
+        "note": "Médiation",
+        "includes": [
+          "Suivi personnalisé",
+          "Négociation experte",
+          "Indemnisation optimisée"
+        ]
+      },
+      {
+        "name": "Renouvellement et révision des contrats",
+        "tagline": "Suivi régulier de vos besoins, réajustement des garanties et gestion proactive des renouvellements.",
+        "price": "Proactif",
+        "note": "Suivi",
+        "includes": [
+          "Adaptation continue",
+          "Sécurité renforcée",
+          "Continuité de couverture"
+        ]
+      },
+      {
+        "name": "Gestion des risques",
+        "tagline": "Identification, évaluation et conseils pour réduire ou couvrir efficacement vos risques personnels et professionnels.",
+        "price": "Diagnostic",
+        "note": "Audit",
+        "includes": [
+          "Diagnostic complet",
+          "Conseils de prévention",
+          "Optimisation des primes"
+        ]
+      },
+      {
+        "name": "Services de formation et d'éducation",
+        "tagline": "Sessions d'information, sensibilisation aux risques et accompagnement pédagogique personnalisé.",
+        "price": "Pédagogie",
+        "note": "Formation",
+        "includes": [
+          "Meilleure compréhension",
+          "Autonomie renforcée",
+          "Gestion optimisée"
+        ]
+      },
+      {
+        "name": "Assurance pour les entreprises",
+        "tagline": "Solutions groupe, responsabilité civile professionnelle, assurance de biens et couverture des risques sectoriels.",
+        "price": "Entreprise",
+        "note": "Pro",
+        "includes": [
+          "Offres spécifiques",
+          "Couverture complète",
+          "Solutions adaptéées"
+        ]
+      },
+      {
+        "name": "Assurance-vie et prévoyance",
+        "tagline": "Couverture décès, incapacité, perte de revenus et solutions retraite/succession pour sécuriser votre famille.",
+        "price": "Patrimoine",
+        "note": "Prévoyance",
+        "includes": [
+          "Securisation familiale",
+          "Épargne constituée",
+          "Prévoyance santé"
+        ]
+      },
+      {
+        "name": "Intermédiation pour produits spécialisés",
+        "tagline": "Assurance pour risques rares, œuvres d'art, sports extrêmes et biens de valeur exceptionnelle.",
+        "price": "Spécifique",
+        "note": "Rare",
+        "includes": [
+          "Solutions sur-mesure",
+          "Conseils experts",
+          "Couverture atypique"
+        ]
+      }
+    ],
+    "options_carte": {
+      "title": "Votre partenaire de confiance depuis 1995",
+      "items": [
+        {
+          "name": "Prendre rendez-vous",
+          "price": "10,000+ Clients satisfaits"
+        },
+        {
+          "name": "Nous appeler",
+          "price": "95% Taux de satisfaction"
+        }
+      ]
+    },
+    "acompte_note": {
+      "text": "Avec plus de 25 ans d'expérience au Gabon, nous avons développé une expertise unique qui nous permet de vous offrir des solutions d'assurance parfaitement adaptées à vos besoins et au contexte local."
+    },
+    "cta": {
+      "title_html": "Prêt à bénéficier de <span class='text-gold'>notre expertise ?</span>",
+      "sub": "Contactez-nous dès aujourd'hui pour une consultation personnalisée et découvrez comment nous pouvons vous accompagner dans tous vos projets d'assurance.",
+      "btn_label": "Demander un conseil gratuit →",
+      "btn_url": "/contact"
+    }
+  },
+  "faq": {
+    "header": {
+      "eyebrow": "Témoignages",
+      "title_html": "Ce que disent <span class='text-gold'>nos clients</span>",
+      "sub": "La satisfaction de nos clients est notre plus belle récompense. Découvrez leurs témoignages sur notre accompagnement."
+    },
+    "items": [
+      {
+        "q": "Marie Ngouabi — Entrepreneuse (Ngouabi Distribution)",
+        "a": "\"La Ruche Excellence m'accompagne depuis 5 ans. Leur expertise et leur réactivité en cas de sinistre sont remarquables. Je recommande vivement leurs services.\""
+      }
+    ]
+  },
+  "contact": {
+    "header": {
+      "eyebrow": "Contactez-nous",
+      "title_html": "Notre équipe est <span class='text-gold'>à votre disposition</span>",
+      "sub": "Rendez-nous visite dans nos bureaux au cœur de Libreville ou envoyez-nous un message."
+    },
+    "blocs": {
+      "title": "Nos coordonnées",
+      "email": "contact@larucheexcellence.ga | info@larucheexcellence.ga",
+      "whatsapp": "+241 01 76 12 34 | +241 01 76 56 78",
+      "delay": "Lundi - Vendredi : 8h00 - 17h00 | Samedi : 8h00 - 12h00 | Dimanche : Fermé"
+    },
+    "reassurance_title": "Notre Agence Principale",
+    "reassurance": [
+      "Boulevard de l'Indépendance, BP 4045, Libreville, Gabon",
+      "Service de Rappel immédiat & Chat en direct actifs",
+      "Courtier agréé CIMA — Analyse et audits 100% confidentiels"
+    ],
+    "next_steps": {
+      "title": "Contact rapide",
+      "items": [
+        "Rappel immédiat",
+        "Chat en direct",
+        "Nous trouver",
+        "Rendez-nous visite dans nos bureaux au cœur de Libreville"
+      ]
+    },
+    "form": {
+      "endpoint": "https://formspree.io/f/xoqprjz6",
+      "title": "Envoyez-nous un message",
+      "sub": "* Champs obligatoires",
+      "labels": {
+        "company": "Sujet * (Sélectionner un sujet)",
+        "name": "Nom complet *",
+        "email": "Email *",
+        "message": "Message * (Décrivez votre demande en détail...)"
+      },
+      "submit_label": "Envoyer",
+      "note": "Chiffrement de sécurité SSL activé. Vos informations d'audit restent confidentielles."
+    }
+  },
+  "footer": {
+    "logo_html": "La Ruche Excellence",
+    "tagline": "Votre partenaire assurance de confiance au Gabon depuis 1995.",
+    "desc": "La Ruche Excellence, votre partenaire assurance de confiance au Gabon depuis 1995. Cabinet de courtage indépendant dédié à la pérennisation de vos actifs.",
+    "titles": {
+      "navigation": "Liens Utiles",
+      "contact": "Légal"
+    },
+    "labels": {
+      "emergency": "Suivez-nous"
+    },
+    "bottom_left": "© 2026 La Ruche Excellence. Tous droits réservés.",
+    "bottom_right": "Prestations facturées par Helpboma Sa Ltd — Company No (Companies House): 15816678"
+  },
+  "cookie_banner": {
+    "text_html": "Traceurs techniques optimisés pour la sécurité de vos audits.",
+    "btn_accept": "Autoriser",
+    "btn_decline": "Restreindre"
+  },
+  "whatsapp_float": {
+    "label": "Chat",
+    "tip": "En ligne",
+    "message_url": "https://wa.me/24101761234"
+  },
+  "blog": {
+    "eyebrow": "Publications & Perspectives",
+    "title": "Notre espace de réflexion institutionnel est en cours de préparation",
+    "sub": "Nos experts finalisent actuellement l'analyse des dynamiques de marché et des réglementations CIMA pour vous offrir des éclairages rigoureux très prochainement.",
+    "class_color": "bg-navy",
+    "cta_label": "Retour à l'accueil"
+  },
+  "legal": {
+    "eyebrow": "Informations Légales",
+    "title_html": "Mentions Légales <span class='text-gold'>& Conditions</span>",
+    "sections": [
+      {
+        "title": "Mentions légales",
+        "content_html": "<p><strong>Éditeur du site</strong><br>Raison sociale : La Ruche Excellence SARL<br>Siège social : Boulevard de l'Indépendance, BP 4045, Libreville, Gabon<br>Capital social : 10 000 000 FCFA<br>RCCM : GA-LBV-01-2023-B12-00001<br>Numéro de TVA : GA123456789<br>Téléphone : +241 01 76 12 34<br>Email : contact@larucheexcellence.ga</p><p><strong>Directeur de publication</strong><br>M. Alain MBENG, Directeur Général</p><p><strong>Hébergement</strong><br>Ce site est hébergé par :<br>Render Networks<br>San Francisco, California<br>États-Unis</p><p><strong>Propriété intellectuelle</strong><br>L'ensemble du site web et son contenu (textes, images, logos, graphismes, etc.) sont protégés par le droit d'auteur et sont la propriété exclusive de La Ruche Excellence ou de ses partenaires. Toute reproduction, même partielle, est interdite sans autorisation préalable écrite.</p>"
+      },
+      {
+        "title": "Politique de cookies",
+        "content_html": "<p><strong>Qu'est-ce qu'un cookie ?</strong><br>Un cookie est un petit fichier texte déposé sur votre ordinateur lors de votre visite sur notre site web. Les cookies nous permettent d'améliorer votre expérience de navigation.</p><p><strong>Types de cookies utilisés</strong><br><em>Cookies techniques (obligatoires)</em><br>Ces cookies sont nécessaires au bon fonctionnement du site. Ils permettent notamment la navigation, l'affichage du site et l'utilisation des services proposés.<br><br><em>Cookies de performance</em><br>Ces cookies nous permettent de mesurer l'audience du site et d'améliorer nos services. Ils sont soumis à votre consentement.</p><p><strong>Gestion des cookies</strong><br>Vous pouvez à tout moment modifier vos préférences concernant les cookies via les paramètres de votre navigateur ou en utilisant notre bandeau de consentement.</p>"
+      },
+      {
+        "title": "Conditions d'utilisation",
+        "content_html": "<p><strong>Accès au site</strong><br>L'accès au site www.larucheexcellence.ga est gratuit. L'utilisateur s'engage à utiliser le site conformément à la loi et aux présentes conditions.</p><p><strong>Responsabilité</strong><br>La Ruche Excellence met tout en œuvre pour fournir des informations exactes et mises à jour. Cependant, nous ne pouvons garantir l'exactitude, la complétude ou l'actualité des informations présentes sur le site.</p><p><strong>Modification des conditions</strong><br>Ces conditions peuvent être modifiées à tout moment. Les modifications entreront en vigueur dès leur publication sur le site.</p>"
+      },
+      {
+        "title": "Protection des données (RGPD)",
+        "content_html": "<p>Conformément aux normes en vigueur, vos données personnelles recueillies via nos formulaires sont strictement confidentielles. Elles sont utilisées uniquement dans le cadre du traitement de vos demandes de devis et d'assistance. Vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant notre équipe juridique.</p>"
+      }
+    ],
+    "cta": {
+      "title": "Des questions sur nos conditions légales ?",
+      "sub": "Notre équipe juridique est à votre disposition pour tout éclaircissement.",
+      "btn_label": "Nous contacter",
+      "btn_url": "/contact"
+    }
+  }
+}

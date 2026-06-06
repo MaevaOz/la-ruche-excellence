@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-content="meta.title"></title>
+    <!-- Méta-données -->
+    <meta name="description" data-attr="content:meta.description">
+    <meta name="keywords" data-attr="content:meta.keywords">
+    <meta name="theme-color" data-attr="content:meta.theme_color">
+    <link rel="canonical" data-attr="href:meta.canonical">
+    
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="/" class="nav-logo">
+            <span data-content="nav.logo.text_principal" style="color: var(--bleu-abyssal)"></span><span data-content="nav.logo.sub"></span>
+        </a>
+        <div class="nav-links" data-list="nav.links" data-item="link">
+            <template>
+                <a class="nav-link" data-attr="href:link.url" data-content="link.label"></a>
+            </template>
+        </div>
+        <a href="/contact" class="btn-audit" data-content="hero.ctas[0].label" data-attr="href:hero.ctas[0].url"></a>
+    </nav>
+
+    <main>
+        <section class="hero" style="min-height: 50vh; padding-top: 12rem; padding-bottom: 6rem;">
+            <span class="hero-eyebrow" data-content="portfolio.eyebrow"></span>
+            <h1 data-content="portfolio.title_html" style="font-size: clamp(2.5rem, 5vw, 4.5rem);"></h1>
+            <p data-content="portfolio.sub"></p>
+        </section>
+
+        <section class="section section-alt">
+            <div class="search-container" style="max-width: 1400px; margin: 0 auto 3rem;">
+                <input type="text" class="search-input" data-attr="placeholder:portfolio.search_placeholder">
+                <div class="filter-tabs" data-list="portfolio.sectors" data-item="sec">
+                    <template>
+                        <button class="filter-tab" data-content="sec"></button>
+                    </template>
+                </div>
+            </div>
+
+            <div class="grid" data-list="portfolio.items" data-item="prod">
+                <template>
+                    <a class="card" data-attr="href:prod.url" style="display: block; color: inherit; text-decoration: none;">
+                        <span class="badge" data-content="prod.sector"></span>
+                        <h3 data-content="prod.name"></h3>
+                        <div class="product-price" data-content="prod.price" style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;"></div>
+                        <p data-content="prod.desc"></p>
+                        <span class="card-link" data-content="portfolio.view_details_label"></span>
+                    </a>
+                </template>
+            </div>
+            
+            <div style="text-align: center; margin-top: 6rem;">
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--bleu-abyssal); margin-bottom: 1.5rem;" data-content="portfolio.cta_text"></p>
+                <a href="/contact" class="btn-audit" style="background-color: transparent; color: var(--bleu-abyssal); border-color: var(--vieil-or);" data-content="portfolio.cta_btn_label"></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <span data-content="nav.logo.text_principal"></span><span data-content="nav.logo.sub"></span>
+                </div>
+                <p class="footer-desc" data-content="footer.desc"></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-content="footer.titles.navigation"></h4>
+                <ul data-list="nav.links" data-item="link">
+                    <template>
+                        <li><a data-attr="href:link.url" data-content="link.label"></a></li>
+                    </template>
+                </ul>
+            </div>
+            <div class="footer-col" style="min-width: 300px;">
+                <h4 data-content="footer.titles.contact"></h4>
+                <ul>
+                    <li data-content="contact.blocs.email"></li>
+                    <li data-content="contact.blocs.whatsapp"></li>
+                    <li style="margin-top: 2rem;">
+                         <a data-attr="href:contact.blocs.whatsapp_url" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid var(--vieil-or); padding-bottom: 0.25rem;" data-content="footer.labels.emergency"></a>
+                    </li>
+                </ul>
+                <h4 style="margin-top: 2rem; color: var(--vieil-or); font-size: 0.9rem; text-transform: uppercase;">Documents Légaux</h4>
+                <ul>
+                    <li><a href="/legal" style="opacity: 0.8; font-size: 0.9rem;">Mentions légales, RGPD & Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div style="flex-grow: 1;">
+                <span data-content="footer.bottom_left"></span>
+                <span style="opacity: 0.5; margin: 0 0.5rem;">|</span>
+                Site designé & structuré par <a href="https://maekiastudio.onrender.com" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); font-weight: 600;">MaEkia Studio</a>
+            </div>
+            <div data-content="footer.bottom_right" style="text-align: right; max-width: 50%;"></div>
+        </div>
+    </footer>
+</body>
+</html>

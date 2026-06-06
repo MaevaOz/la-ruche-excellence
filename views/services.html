@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-content="meta.title"></title>
+    <meta name="description" data-attr="content:meta.description">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="/" class="nav-logo">
+            <span data-content="nav.logo.text_principal" style="color: var(--bleu-abyssal)"></span><span data-content="nav.logo.sub"></span>
+        </a>
+        <div class="nav-links" data-list="nav.links" data-item="link">
+            <template>
+                <a class="nav-link" data-attr="href:link.url" data-content="link.label"></a>
+            </template>
+        </div>
+        <a href="/contact" class="btn-audit" data-content="hero.ctas[0].label" data-attr="href:hero.ctas[0].url"></a>
+    </nav>
+
+    <main style="padding-top: 12rem;">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow" data-content="services.header.eyebrow"></span>
+                <h1 class="section-title" data-content="services.header.title_html" style="font-size: clamp(3rem, 5vw, 4.5rem);"></h1>
+                <p data-content="services.header.sub" style="max-width: 600px; margin: 0 auto; font-size: 1.15rem; opacity: 0.8;"></p>
+            </div>
+
+            <div class="grid" data-list="services.items" data-item="serv" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                <template>
+                    <div class="card" style="position: relative; border-top: 6px solid var(--vieil-or);">
+                        <h3 data-content="serv.name" style="font-size: 2rem; margin-bottom: 1rem;"></h3>
+                        <p data-content="serv.tagline" style="min-height: 60px;"></p>
+                        
+                        <div style="margin: 2rem 0; padding-bottom: 2rem; border-bottom: 1px solid var(--or-rgba);">
+                            <span style="font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; color: var(--bleu-abyssal);" data-content="serv.price"></span>
+                            <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--vieil-or); margin-left: 0.5rem; font-weight: 600;" data-content="serv.note"></span>
+                        </div>
+
+                        <ul data-list="serv.includes" data-item="inc" style="list-style: none; margin-bottom: 1.5rem; flex-grow: 1; padding-left: 0;">
+                            <template>
+                                <li style="margin-bottom: 1rem; position: relative; padding-left: 1.5rem; font-size: 0.95rem;">
+                                    <span style="position: absolute; left: 0; color: var(--vieil-or); font-weight: bold;">+</span>
+                                    <span data-content="inc"></span>
+                                </li>
+                            </template>
+                        </ul>
+                        </div>
+                </template>
+            </div>
+
+            <div style="margin-top: 6rem; background-color: var(--blanc-celeste); padding: 4rem; border: 1px solid var(--or-rgba); border-radius: 8px;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--bleu-abyssal); margin-bottom: 2rem;" data-content="services.options_carte.title"></h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;" data-list="services.options_carte.items" data-item="opt">
+                    <template>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(197, 168, 128, 0.2); padding-bottom: 1rem;">
+                            <span style="font-weight: 500; padding-right: 1rem;" data-content="opt.name"></span>
+                            <span style="font-family: 'Playfair Display', serif; font-weight: 700; color: var(--vieil-or);" data-content="opt.price"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            
+            <p style="margin-top: 4rem; text-align: center; font-size: 0.85rem; opacity: 0.6; max-width: 800px; margin-left: auto; margin-right: auto;" data-content="services.acompte_note.text"></p>
+        </section>
+
+        <section class="section" style="text-align: center; padding-bottom: 8rem;">
+            <h2 class="section-title" data-content="services.cta.title_html"></h2>
+            <p data-content="services.cta.sub" style="font-size: 1.15rem; opacity: 0.8; max-width: 600px; margin: 0 auto 3rem;"></p>
+            <a class="btn-audit" data-content="services.cta.btn_label" data-attr="href:services.cta.btn_url"></a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <span data-content="nav.logo.text_principal"></span><span data-content="nav.logo.sub"></span>
+                </div>
+                <p class="footer-desc" data-content="footer.desc"></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-content="footer.titles.navigation"></h4>
+                <ul data-list="nav.links" data-item="link">
+                    <template>
+                        <li><a data-attr="href:link.url" data-content="link.label"></a></li>
+                    </template>
+                </ul>
+            </div>
+            <div class="footer-col" style="min-width: 300px;">
+                <h4 data-content="footer.titles.contact"></h4>
+                <ul>
+                    <li data-content="contact.blocs.email"></li>
+                    <li data-content="contact.blocs.whatsapp"></li>
+                    <li style="margin-top: 2rem;">
+                         <a data-attr="href:contact.blocs.whatsapp_url" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid var(--vieil-or); padding-bottom: 0.25rem;" data-content="footer.labels.emergency"></a>
+                    </li>
+                </ul>
+                <h4 style="margin-top: 2rem; color: var(--vieil-or); font-size: 0.9rem; text-transform: uppercase;">Documents Légaux</h4>
+                <ul>
+                    <li><a href="/legal" style="opacity: 0.8; font-size: 0.9rem;">Mentions légales, RGPD & Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div style="flex-grow: 1;">
+                <span data-content="footer.bottom_left"></span>
+                <span style="opacity: 0.5; margin: 0 0.5rem;">|</span>
+                Site designé & structuré par <a href="https://maekiastudio.onrender.com" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); font-weight: 600;">MaEkia Studio</a>
+            </div>
+            <div data-content="footer.bottom_right" style="text-align: right; max-width: 50%;"></div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel d'Administration Dynamique | La Ruche Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdfcf9; color: #1a1a1a; margin: 0; padding: 2rem; padding-bottom: 8rem; }
+        .header-admin { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 2px solid #eee; padding-bottom: 1rem; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0; color: #0b132b; font-weight: 700; }
+        h1 span { color: #c5a880; }
+        h2 { font-family: 'Playfair Display', serif; color: #0b132b; font-size: 1.8rem; margin: 3rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e0e0e0; font-weight: 700; }
+        h3 { font-family: 'Playfair Display', serif; color: #c5a880; font-size: 1.25rem; margin: 2rem 0 1rem; font-weight: 600; }
+        .tabs { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .tab-btn { background: #fff; border: 1px solid #ddd; padding: 0.75rem 1.5rem; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; color: #666; transition: 0.3s; }
+        .tab-btn.active { background: #0b132b; color: #c5a880; border-color: #0b132b; }
+        .tab-content { display: none; background: #fff; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(197,168,128,0.2); }
+        .tab-content.active { display: block; }
+        .f-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; align-items: start; }
+        .f-full { grid-column: 1 / -1; }
+        label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #0b132b; font-weight: 700; margin-bottom: 0.5rem; }
+        input, textarea, select { width: 100%; border: 1px solid #ddd; padding: 0.85rem; font-family: inherit; font-size: 0.95rem; background: #fafafa; transition: border 0.3s; box-sizing: border-box; }
+        input:focus, textarea:focus, select:focus { border-color: #c5a880; outline: none; background: #fff; }
+        textarea { resize: vertical; min-height: 100px; }
+        .dynamic-item-card { background: #fdfdfd; border-left: 4px solid var(--vieil-or, #c5a880); padding: 2rem; margin-bottom: 1.5rem; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee; position: relative; }
+        .btn-add { background: transparent; border: 1px dashed #c5a880; color: #c5a880; padding: 1rem 2rem; text-transform: uppercase; font-size: 0.8rem; font-weight: 700; cursor: pointer; letter-spacing: 0.1em; width: 100%; margin-top: 1rem; transition: 0.3s; }
+        .btn-add:hover { background: #fdfcf9; border-style: solid; }
+        .btn-delete { background: #ff4d4d; color: #fff; border: none; padding: 0.5rem 1rem; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; cursor: pointer; letter-spacing: 0.05em; transition: 0.3s; }
+        .btn-delete:hover { background: #cc0000; }
+        .btn-save-fixed { position: fixed; bottom: 2rem; right: 2rem; z-index: 1050; background-color: #0b132b; color: #c5a880; border: 1px solid #0b132b; padding: 1.25rem 2.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+        .btn-save-fixed:hover { background-color: #c5a880; color: #0b132b; border-color: #c5a880; }
+        .btn-outline-dark { color: #0b132b; border: 1px solid #0b132b; padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; }
+    </style>
+</head>
+<body>
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="header-admin">
+            <h1>La Ruche Excellence <span>| Gestion Globale Dynamique</span></h1>
+            <a href="/" target="_blank" class="btn-outline-dark">Voir le site</a>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('seo', event)" type="button">Paramètres & Nav</button>
+            <button class="tab-btn" onclick="showTab('home', event)" type="button">Accueil & À Propos</button>
+            <button class="tab-btn" onclick="showTab('process', event)" type="button">Expertise & Preuves</button>
+            <button class="tab-btn" onclick="showTab('portfolio', event)" type="button">Catalogue</button>
+            <button class="tab-btn" onclick="showTab('services', event)" type="button">Services & Formules</button>
+            <button class="tab-btn" onclick="showTab('contact', event)" type="button">FAQ & Contact</button>
+            <button class="tab-btn" onclick="showTab('footer', event)" type="button">Footer & Légales</button>
+        </div>
+
+        <form method="POST" action="/admin" id="cms-main-form">
+            <button type="submit" class="btn-save-fixed">Sauvegarder l'intégralité du site</button>
+
+            <div id="tab-seo" class="tab-content active">
+                <h2>1. Section SEO & Méta</h2>
+                <div class="f-grid">
+                    <div class="f-full"><label>Titre global</label><input type="text" name="meta.title"></div>
+                    <div><label>ID Verification Google</label><input type="text" name="meta.google_site_verification"></div>
+                    <div><label>Mots-clés</label><input type="text" name="meta.keywords"></div>
+                    <div class="f-full"><label>Description</label><textarea name="meta.description"></textarea></div>
+                    <div><label>Auteur</label><input type="text" name="meta.author"></div>
+                    <div><label>Couleur thème</label><input type="text" name="meta.theme_color"></div>
+                    <div class="f-full"><label>URL Canonique</label><input type="text" name="meta.canonical"></div>
+                    <div><label>OpenGraph Locale</label><input type="text" name="meta.og.locale"></div>
+                    <div><label>OpenGraph Type</label><input type="text" name="meta.og.type"></div>
+                    <div><label>OpenGraph Site Name</label><input type="text" name="meta.og.site_name"></div>
+                    <div><label>OpenGraph Title</label><input type="text" name="meta.og.title"></div>
+                    <div class="f-full"><label>OpenGraph Desc</label><textarea name="meta.og.description"></textarea></div>
+                    <div><label>OpenGraph URL</label><input type="text" name="meta.og.url"></div>
+                    <div><label>OpenGraph Image URL</label><input type="text" name="meta.og.image"></div>
+                </div>
+
+                <h2>2. Section Navigation & Logo</h2>
+                <div class="f-grid">
+                    <div><label>Texte principal Logo</label><input type="text" name="nav.logo.text_principal"></div>
+                    <div><label>Sous-texte Logo</label><input type="text" name="nav.logo.sub"></div>
+                </div>
+                <h3>Liens de Navigation Dynamiques</h3>
+                <div id="container-nav-links"></div>
+            </div>
+
+            <div id="tab-home" class="tab-content">
+                <h2>3. Section Hero (Accueil)</h2>
+                <div class="f-grid">
+                    <div><label>Surtitre</label><input type="text" name="hero.eyebrow"></div>
+                    <div><label>Phrase de promesse</label><input type="text" name="hero.promise"></div>
+                    <div class="f-full"><label>Titre HTML</label><textarea name="hero.title_html"></textarea></div>
+                    <div class="f-full"><label>Sous-titre</label><textarea name="hero.sub"></textarea></div>
+                </div>
+                
+                <h3>Boutons de l'Accueil Dynamiques</h3>
+                <div id="container-hero-ctas" style="margin-bottom: 2rem;"></div>
+
+                <h3>Statistiques Dynamiques</h3>
+                <div id="container-hero-stats" style="margin-bottom: 2rem;"></div>
+
+                <h3>Carte Flottante</h3>
+                <div class="f-grid">
+                    <div><label>Chiffre</label><input type="text" name="hero.float_card.num"></div>
+                    <div><label>Texte</label><input type="text" name="hero.float_card.label"></div>
+                </div>
+
+                <h2>4. Section Pour Qui (Profils Territoriaux)</h2>
+                <div id="container-for-who-cards"></div>
+
+                <h2>5. Section À Propos</h2>
+                <div class="f-grid">
+                    <div><label>Badge Strong</label><input type="text" name="about.badge.strong"></div>
+                    <div><label>Badge Span</label><input type="text" name="about.badge.span"></div>
+                    <div class="f-full"><label>Badge Sub (Mission)</label><input type="text" name="about.badge.sub"></div>
+                    <div class="f-full"><label>Surtitre</label><input type="text" name="about.eyebrow"></div>
+                    <div class="f-full"><label>Titre HTML</label><textarea name="about.title_html"></textarea></div>
+                </div>
+                
+                <h3>Paragraphes Éditoriaux</h3>
+                <div id="container-about-paragraphs"></div>
+                
+                <h3>Valeurs Phares Dynamiques</h3>
+                <div id="container-about-values"></div>
+                
+                <h3>Signature</h3>
+                <div class="f-grid">
+                    <div><label>Nom</label><input type="text" name="about.signature.name"></div>
+                    <div><label>Rôle</label><input type="text" name="about.signature.role"></div>
+                </div>
+            </div>
+
+            <div id="tab-process" class="tab-content">
+                <h2>6. Section Réassurance Générale (Équipe & Experts)</h2>
+                <div class="f-grid" style="margin-bottom: 1rem;">
+                    <div class="f-full"><label>Titre Général Preuves HTML</label><textarea name="proof.title_html"></textarea></div>
+                </div>
+                <div id="container-proof-cards"></div>
+
+                <h2>7. Section Protocole & Processus (Historique)</h2>
+                <div class="f-grid">
+                    <div class="f-full"><label>Surtitre</label><input type="text" name="process.eyebrow"></div>
+                    <div class="f-full"><label>Titre HTML</label><textarea name="process.title_html"></textarea></div>
+                    <div class="f-full"><label>Sous-titre</label><textarea name="process.sub"></textarea></div>
+                </div>
+                
+                <h3>Étapes Chronologiques Dynamiques</h3>
+                <div id="container-process-steps"></div>
+
+                <h3>Blocs Informations Annexes</h3>
+                <div class="f-grid">
+                    <div class="f-full"><label>Titre - Ce qui est géré</label><input type="text" name="process.visual_cards.manage"></div>
+                    <div class="f-full"><label>Texte - Ce qu'il faut fournir</label><textarea name="process.visual_cards.need"></textarea></div>
+                    <div class="f-full"><label>Surtitre - Délais</label><input type="text" name="process.visual_cards.delays_tag"></div>
+                    <div class="f-full"><label>Texte HTML - Délais</label><textarea name="process.visual_cards.delays_html"></textarea></div>
+                    <div class="f-full"><label>Titre - Transparence financière</label><input type="text" name="process.visual_cards.payment_title"></div>
+                    <div class="f-full"><label>Description - Transparence financière</label><textarea name="process.visual_cards.payment_desc"></textarea></div>
+                </div>
+            </div>
+
+            <div id="tab-portfolio" class="tab-content">
+                <h2>8. Section Catalogue Produits</h2>
+                <div class="f-grid">
+                    <div><label>Surtitre</label><input type="text" name="portfolio.eyebrow"></div>
+                    <div><label>Placeholder Recherche</label><input type="text" name="portfolio.search_placeholder"></div>
+                    <div class="f-full"><label>Titre HTML</label><textarea name="portfolio.title_html"></textarea></div>
+                    <div class="f-full"><label>Sous-titre</label><textarea name="portfolio.sub"></textarea></div>
+                    <div><label>Libellé action (Bouton index)</label><input type="text" name="portfolio.view_details_label"></div>
+                    <div><label>Note CIMA Fiche Produit HTML</label><textarea name="portfolio.cima_disclaimer_html"></textarea></div>
+                    <div><label>Mention prix sur devis</label><input type="text" name="portfolio.labels.on_quote"></div>
+                    <div><label>Note d'accompagnement prix HTML</label><textarea name="portfolio.labels.price_note_html"></textarea></div>
+                    <div><label>Onglet Fiche 1</label><input type="text" name="portfolio.tabs.details"></div>
+                    <div><label>Onglet Fiche 2</label><input type="text" name="portfolio.tabs.garanties"></div>
+                    <div><label>Onglet Fiche 3</label><input type="text" name="portfolio.tabs.documents"></div>
+                </div>
+
+                <h3>Filtres / Secteurs d'Activité Actifs</h3>
+                <div id="container-portfolio-sectors" style="margin-bottom: 2rem;"></div>
+                
+                <h3>Fiches Produits Disponibles (CRUD Complet)</h3>
+                <div id="container-portfolio-items"></div>
+
+                <h3>Zone de conversion Catalogue</h3>
+                <div class="f-grid">
+                    <div><label>Texte global CTA</label><input type="text" name="portfolio.cta_text"></div>
+                    <div><label>Libellé Bouton</label><input type="text" name="portfolio.cta_btn_label"></div>
+                </div>
+            </div>
+
+            <div id="tab-services" class="tab-content">
+                <h2>9. Section Prestations Services & Tarifs</h2>
+                <div class="f-grid">
+                    <div class="f-full"><label>Surtitre Page Services</label><input type="text" name="services.header.eyebrow"></div>
+                    <div class="f-full"><label>Titre HTML</label><textarea name="services.header.title_html"></textarea></div>
+                    <div class="f-full"><label>Sous-titre</label><textarea name="services.header.sub"></textarea></div>
+                </div>
+
+                <h3>Offres & Forfaits Institutionnels</h3>
+                <div id="container-services-items"></div>
+
+                <h3>Options à la Carte</h3>
+                <div id="container-services-options"></div>
+
+                <h3>Mentions & Conversion Finale</h3>
+                <div class="f-grid">
+                    <div class="f-full"><label>Note d'acompte (Texte)</label><textarea name="services.acompte_note.text"></textarea></div>
+                    <div class="f-full"><label>Bannière finale - Titre HTML</label><textarea name="services.cta.title_html"></textarea></div>
+                    <div class="f-full"><label>Bannière finale - Sous-titre</label><textarea name="services.cta.sub"></textarea></div>
+                    <div><label>Bannière finale - Libellé bouton</label><input type="text" name="services.cta.btn_label"></div>
+                    <div><label>Bannière finale - URL cible</label><input type="text" name="services.cta.btn_url"></div>
+                </div>
+            </div>
+
+            <div id="tab-contact" class="tab-content">
+                <h2>10. Section FAQ Institutionnelle</h2>
+                <div class="f-grid">
+                    <div class="f-full"><label>Surtitre FAQ</label><input type="text" name="faq.header.eyebrow"></div>
+                    <div class="f-full"><label>Titre FAQ HTML</label><textarea name="faq.header.title_html"></textarea></div>
+                    <div class="f-full"><label>Sous-titre FAQ</label><input type="text" name="faq.header.sub"></div>
+                </div>
+                <div id="container-faq-items"></div>
+
+                <h2>11. Section Contact & Coordonnées</h2>
+                <div class="f-grid">
+                    <div class="f-full"><label>Surtitre Contact</label><input type="text" name="contact.header.eyebrow"></div>
+                    <div class="f-full"><label>Titre Contact HTML</label><textarea name="contact.header.title_html"></textarea></div>
+                    <div class="f-full"><label>Sous-titre Contact</label><textarea name="contact.header.sub"></textarea></div>
+                    <div class="f-full"><h3>Informations Directes</h3></div>
+                    <div class="f-full"><label>Titre Zone Infos</label><input type="text" name="contact.blocs.title"></div>
+                    <div><label>Emails (Séparés par |)</label><input type="text" name="contact.blocs.email"></div>
+                    <div><label>Téléphone / WhatsApp Bruts</label><input type="text" name="contact.blocs.whatsapp"></div>
+                    <div><label>Lien API WhatsApp International</label><input type="text" name="contact.blocs.whatsapp_url"></div>
+                    <div class="f-full"><label>Horaires d'ouverture</label><input type="text" name="contact.blocs.delay"></div>
+                </div>
+
+                <h3>Lignes d'engagements (Puces de réassurance)</h3>
+                <div id="container-contact-reassurance"></div>
+
+                <h3>Prochaines Étapes Cliniques</h3>
+                <div id="container-contact-nextsteps"></div>
+
+                <h3>Fiche Formulaire Technique</h3>
+                <div class="f-grid">
+                    <div class="f-full"><label>Endpoint de traitement externe (Formspree, etc.)</label><input type="text" name="contact.form.endpoint"></div>
+                    <div><label>Titre du Formulaire</label><input type="text" name="contact.form.title"></div>
+                    <div><label>Bouton d'envoi</label><input type="text" name="contact.form.submit_label"></div>
+                    <div class="f-full"><label>Sous-titre Formulaire</label><textarea name="contact.form.sub"></textarea></div>
+                    <div class="f-full"><label>Note de bas de page (Chiffrement)</label><textarea name="contact.form.note"></textarea></div>
+                    <div><label>Champ Sujet</label><input type="text" name="contact.form.labels.company"></div>
+                    <div><label>Champ Nom complet</label><input type="text" name="contact.form.labels.name"></div>
+                    <div><label>Champ Email</label><input type="text" name="contact.form.labels.email"></div>
+                    <div><label>Champ Message</label><input type="text" name="contact.form.labels.message"></div>
+                </div>
+            </div>
+
+            <div id="tab-footer" class="tab-content">
+                <h2>12. Section Footer Universel</h2>
+                <div class="f-grid">
+                    <div><label>Logo texte principal</label><input type="text" name="footer.logo_html"></div>
+                    <div><label>Slogan corporatif</label><input type="text" name="footer.tagline"></div>
+                    <div class="f-full"><label>Description générale</label><textarea name="footer.desc"></textarea></div>
+                    <div><label>Titre Navigation</label><input type="text" name="footer.titles.navigation"></div>
+                    <div><label>Titre Contact</label><input type="text" name="footer.titles.contact"></div>
+                    <div><label>Libellé Ligne Suivez-nous</label><input type="text" name="footer.labels.emergency"></div>
+                    <div><label>Copyright (gauche)</label><input type="text" name="footer.bottom_left"></div>
+                    <div class="f-full"><label>Facturation / Enregistrement (droite)</label><input type="text" name="footer.bottom_right"></div>
+                </div>
+
+                <h2>13. Utilitaire de Traçabilité & RGPD</h2>
+                <div class="f-grid">
+                    <div class="f-full"><label>Texte Cookies HTML</label><textarea name="cookie_banner.text_html"></textarea></div>
+                    <div><label>Bouton Autoriser</label><input type="text" name="cookie_banner.btn_accept"></div>
+                    <div><label>Bouton Restreindre</label><input type="text" name="cookie_banner.btn_decline"></div>
+                    <div class="f-full"><h3>Bulle d'Échange Flottante</h3></div>
+                    <div><label>Label</label><input type="text" name="whatsapp_float.label"></div>
+                    <div><label>Tip d'état</label><input type="text" name="whatsapp_float.tip"></div>
+                    <div class="f-full"><label>Lien direct action</label><input type="text" name="whatsapp_float.message_url"></div>
+                </div>
+
+                <h2>14. Section Espace Réflexion (Blog)</h2>
+                <div class="f-grid">
+                    <div><label>Surtitre Blog</label><input type="text" name="blog.eyebrow"></div>
+                    <div><label>Titre Attente</label><input type="text" name="blog.title"></div>
+                    <div class="f-full"><label>Message explicatif d'attente</label><textarea name="blog.sub"></textarea></div>
+                    <div><label>Libellé action</label><input type="text" name="blog.cta_label"></div>
+                </div>
+
+                <h2>15. Volets Juridiques Structurels (legal.sections)</h2>
+                <div id="container-legal-sections"></div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let globalCMSData = {};
+
+        function showTab(id, e) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            e.target.classList.add('active');
+        }
+
+        // --- MOTEUR DE RENDU CRUD DYNAMIQUE POUR TOUTES LES CATÉGORIES ---
+
+        function renderStringList(containerId, keyPath, label) {
+            const container = document.getElementById(containerId);
+            const items = getNestedValue(globalCMSData, keyPath) || [];
+            let html = `<h3>${label}</h3><div style="display:flex; flex-direction:column; gap:0.75rem;">`;
+            
+            items.forEach((item, index) => {
+                html += `
+                    <div style="display:flex; gap:1rem; align-items:center;">
+                        <input type="text" name="${keyPath}[${index}]" value="${item.replace(/"/g, '&quot;')}" required />
+                        <button type="button" class="btn-delete" onclick="deleteItem('${keyPath}', ${index}, '${containerId}', 'string')">Supprimer</button>
+                    </div>`;
+            });
+            html += `</div><button type="button" class="btn-add" onclick="addItem('${keyPath}', '', '${containerId}', 'string')">+ Ajouter à : ${label}</button>`;
+            container.innerHTML = html;
+        }
+
+        function renderNavLinks() {
+            const container = document.getElementById('container-nav-links');
+            const items = globalCMSData.nav?.links || [];
+            let html = '<div style="display:flex; flex-direction:column; gap:1.5rem;">';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Lien #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('nav.links', ${i}, 'nav-links')">Supprimer</button></div>
+                        <div class="f-grid">
+                            <div><label>Libellé</label><input type="text" name="nav.links[${i}].label" value="${item.label || ''}" required></div>
+                            <div><label>URL Cible</label><input type="text" name="nav.links[${i}].url" value="${item.url || ''}" required></div>
+                        </div>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'nav.links\', {label:\'\', url:\'\'}, \'nav-links\')">+ Ajouter un lien de navigation</button>';
+            container.innerHTML = html;
+        }
+
+        function renderHeroCtas() {
+            const container = document.getElementById('container-hero-ctas');
+            const items = globalCMSData.hero?.ctas || [];
+            let html = '<div class="f-grid">';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card f-full">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Bouton d'action #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('hero.ctas', ${i}, 'hero-ctas')">Supprimer</button></div>
+                        <div class="f-grid">
+                            <div><label>Libellé</label><input type="text" name="hero.ctas[${i}].label" value="${item.label || ''}"></div>
+                            <div><label>Lien cible</label><input type="text" name="hero.ctas[${i}].url" value="${item.url || ''}"></div>
+                            <div class="f-full"><label>Classe CSS</label><input type="text" name="hero.ctas[${i}].class" value="${item.class || ''}"></div>
+                        </div>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'hero.ctas\', {label:\'\', url:\'\', class:\'\'}, \'hero-ctas\')">+ Ajouter un bouton d\'action</button>';
+            container.innerHTML = html;
+        }
+
+        function renderHeroStats() {
+            const container = document.getElementById('container-hero-stats');
+            const items = globalCMSData.hero?.stats || [];
+            let html = '<div class="f-grid">';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Statistique #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('hero.stats', ${i}, 'hero-stats')">Supprimer</button></div>
+                        <label>Chiffre / Compteur</label><input type="text" name="hero.stats[${i}].num" value="${item.num || ''}">
+                        <label style="margin-top:0.5rem;">Libellé d'accompagnement</label><input type="text" name="hero.stats[${i}].label" value="${item.label || ''}">
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'hero.stats\', {num:\'\', label:\'\'}, \'hero-stats\')">+ Ajouter un compteur statistique</button>';
+            container.innerHTML = html;
+        }
+
+        function renderAboutValues() {
+            const container = document.getElementById('container-about-values');
+            const items = globalCMSData.about?.values || [];
+            let html = '<div>';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Valeur Institutionnelle #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('about.values', ${i}, 'about-values')">Supprimer</button></div>
+                        <label>Titre de la valeur</label><input type="text" name="about.values[${i}].strong" value="${item.strong || ''}" required>
+                        <label style="margin-top:0.5rem;">Description développée</label><textarea name="about.values[${i}].span" required>${item.span || ''}</textarea>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'about.values\', {strong:\'\', span:\'\'}, \'about-values\')">+ Ajouter une valeur forte</button>';
+            container.innerHTML = html;
+        }
+
+        function renderProofCards() {
+            const container = document.getElementById('container-proof-cards');
+            const items = globalCMSData.proof?.cards || [];
+            let html = '<div class="f-grid">';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card f-full">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Expert / Profil Cabinet #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('proof.cards', ${i}, 'proof-cards')">Supprimer</button></div>
+                        <div class="f-grid">
+                            <div><label>Nom complet & Titre</label><input type="text" name="proof.cards[${i}].strong" value="${item.strong || ''}" required></div>
+                            <div><label>Rôle & Texte d'accompagnement</label><textarea name="proof.cards[${i}].p" required>${item.p || ''}</textarea></div>
+                        </div>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'proof.cards\', {strong:\'\', p:\'\'}, \'proof-cards\')">+ Ajouter un membre de l\'équipe</button>';
+            container.innerHTML = html;
+        }
+
+        function renderProcessSteps() {
+            const container = document.getElementById('container-process-steps');
+            const items = globalCMSData.process?.steps || [];
+            let html = '<div>';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Étape Chronologique #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('process.steps', ${i}, 'process-steps')">Supprimer</button></div>
+                        <div class="f-grid">
+                            <div><label>Date / Année</label><input type="text" name="process.steps[${i}].num" value="${item.num || ''}" required></div>
+                            <div><label>Intitulé</label><input type="text" name="process.steps[${i}].title" value="${item.title || ''}" required></div>
+                            <div><label>Tag d'action</label><input type="text" name="process.steps[${i}].tag" value="${item.tag || ''}" required></div>
+                            <div class="f-full"><label>Description historique</label><textarea name="process.steps[${i}].desc" required>${item.desc || ''}</textarea></div>
+                        </div>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'process.steps\', {num:\'\', title:\'\', tag:\'\', desc:\'\'}, \'process-steps\')">+ Ajouter un jalon historique</button>';
+            container.innerHTML = html;
+        }
+
+        function renderPortfolioItems() {
+            const container = document.getElementById('container-portfolio-items');
+            const items = globalCMSData.portfolio?.items || [];
+            let html = '<div>';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card" style="border-left-color: #0b132b; background:#fafbfc;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:#0b132b; color:#fff; padding:0.75rem 1.5rem; margin:-2rem -2rem 2rem -2rem;">
+                            <span style="font-weight:600; font-family:'Playfair Display', serif;">Fiche Produit : ${item.name || 'Nouveau Produit'}</span>
+                            <button type="button" class="btn-delete" style="background:#ff4d4d;" onclick="deleteItem('portfolio.items', ${i}, 'portfolio-items')">Supprimer le produit</button>
+                        </div>
+                        <div class="f-grid">
+                            <div><label>Nom du Produit *</label><input type="text" name="portfolio.items[${i}].name" value="${item.name || ''}" required></div>
+                            <div><label>Secteur / Catégorie *</label>
+                                <select name="portfolio.items[${i}].sector" required>
+                                    <option value="Automobile" ${item.sector==='Automobile'?'selected':''}>Automobile</option>
+                                    <option value="Santé" ${item.sector==='Santé'?'selected':''}>Santé</option>
+                                    <option value="Vie" ${item.sector==='Vie'?'selected':''}>Vie</option>
+                                    <option value="Biens" ${item.sector==='Biens'?'selected':''}>Biens</option>
+                                    <option value="Entreprise" ${item.sector==='Entreprise'?'selected':''}>Entreprise</option>
+                                </select>
+                            </div>
+                            <div><label>URL relative (ex: /products/1) *</label><input type="text" name="portfolio.items[${i}].url" value="${item.url || ''}" required></div>
+                            <div><label>URL Image d'illustration *</label><input type="text" name="portfolio.items[${i}].img" value="${item.img || ''}" required></div>
+                            <div><label>Tarification mensuelle (ex: 25 000) *</label><input type="text" name="portfolio.items[${i}].price" value="${item.price || ''}" required></div>
+                            <div><label>Libellé action *</label><input type="text" name="portfolio.items[${i}].tag" value="${item.tag || 'Souscrire →'}" required></div>
+                            <div><label>Classe Couleur Fond (bg-navy / bg-gold)</label><input type="text" name="portfolio.items[${i}].class_color" value="${item.class_color || 'bg-navy'}"></div>
+                            <div class="f-full"><label>Description complète ou introduction</label><textarea name="portfolio.items[${i}].desc" required>${item.desc || ''}</textarea></div>
+                        </div>
+                        
+                        <div class="f-grid" style="margin-top:1.5rem; background:#fff; padding:1.5rem; border:1px solid #eef;">
+                            <div>
+                                <label style="color:#c5a880;">Garanties incluses sur ce produit</label>
+                                <div id="sub-garanties-${i}"></div>
+                                <button type="button" class="btn-add" style="padding:0.4rem; font-size:0.7rem;" onclick="addSubItem('portfolio.items', ${i}, 'garanties', 'Nouvelle garantie', 'portfolio-items')">+ Ajouter une garantie</button>
+                            </div>
+                            <div>
+                                <label style="color:#c5a880;">Documents contractuels (PDF)</label>
+                                <div id="sub-documents-${i}"></div>
+                                <button type="button" class="btn-add" style="padding:0.4rem; font-size:0.7rem;" onclick="addSubItem('portfolio.items', ${i}, 'documents', 'Notice d\'information', 'portfolio-items')">+ Ajouter un document</button>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'portfolio.items\', {name:\'\', sector:\'Automobile\', url:\'\', img:\'\', price:\'\', tag:\'Souscrire →\', class_color:\'bg-navy\', desc:\'\', garanties:[], documents:[]}, \'portfolio-items\')">+ Créer et ajouter un produit au catalogue</button>';
+            container.innerHTML = html;
+
+            // Rendu des sous-tableaux imbriqués pour le catalogue
+            items.forEach((item, i) => {
+                const garContainer = document.getElementById(`sub-garanties-${i}`);
+                (item.garanties || []).forEach((gar, gIndex) => {
+                    garContainer.innerHTML += `
+                        <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+                            <input type="text" name="portfolio.items[${i}].garanties[${gIndex}]" value="${gar.replace(/"/g, '&quot;')}" required>
+                            <button type="button" class="btn-delete" onclick="deleteSubItem('portfolio.items', ${i}, 'garanties', ${gIndex}, 'portfolio-items')">&times;</button>
+                        </div>`;
+                });
+                const docContainer = document.getElementById(`sub-documents-${i}`);
+                (item.documents || []).forEach((doc, dIndex) => {
+                    docContainer.innerHTML += `
+                        <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+                            <input type="text" name="portfolio.items[${i}].documents[${dIndex}]" value="${doc.replace(/"/g, '&quot;')}" required>
+                            <button type="button" class="btn-delete" onclick="deleteSubItem('portfolio.items', ${i}, 'documents', ${dIndex}, 'portfolio-items')">&times;</button>
+                        </div>`;
+                });
+            });
+        }
+
+        function renderServicesItems() {
+            const container = document.getElementById('container-services-items');
+            const items = globalCMSData.services?.items || [];
+            let html = '<div>';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card" style="border-left-color: #c5a880;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Formule / Offre #${i+1} : ${item.name || ''}</strong><button type="button" class="btn-delete" onclick="deleteItem('services.items', ${i}, 'services-items')">Supprimer la formule</button></div>
+                        <div class="f-grid">
+                            <div><label>Nom de la prestation</label><input type="text" name="services.items[${i}].name" value="${item.name || ''}" required></div>
+                            <div><label>Slogan accroche</label><input type="text" name="services.items[${i}].tagline" value="${item.tagline || ''}" required></div>
+                            <div><label>Tarif / Mention (ex: Diagnostic)</label><input type="text" name="services.items[${i}].price" value="${item.price || ''}" required></div>
+                            <div><label>Note explicative (ex: Courtage)</label><input type="text" name="services.items[${i}].note" value="${item.note || ''}" required></div>
+                            <div class="f-full"><label>Inclusions spécifiques de l'offre</label>
+                                <div id="sub-includes-${i}"></div>
+                                <button type="button" class="btn-add" style="padding:0.4rem; font-size:0.7rem; width:auto;" onclick="addSubItem('services.items', ${i}, 'includes', 'Ligne d\'engagement', 'services-items')">+ Ajouter une inclusion</button>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'services.items\', {name:\'\', tagline:\'\', price:\'\', note:\'\', includes:[]}, \'services-items\')">+ Créer une nouvelle formule de prestation</button>';
+            container.innerHTML = html;
+
+            items.forEach((item, i) => {
+                const incContainer = document.getElementById(`sub-includes-${i}`);
+                (item.includes || []).forEach((inc, incIndex) => {
+                    incContainer.innerHTML += `
+                        <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+                            <input type="text" name="services.items[${i}].includes[${incIndex}]" value="${inc.replace(/"/g, '&quot;')}" required>
+                            <button type="button" class="btn-delete" onclick="deleteSubItem('services.items', ${i}, 'includes', ${incIndex}, 'services-items')">&times;</button>
+                        </div>`;
+                });
+            });
+        }
+
+        function renderServicesOptions() {
+            const container = document.getElementById('container-services-options');
+            const items = globalCMSData.services?.options_carte?.items || [];
+            let html = '<div class="f-grid">';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Option #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('services.options_carte.items', ${i}, 'services-options')">Supprimer</button></div>
+                        <label>Désignation option</label><input type="text" name="services.options_carte.items[${i}].name" value="${item.name || ''}" required>
+                        <label style="margin-top:0.5rem;">Valeur affichée (ex: Inclus)</label><input type="text" name="services.options_carte.items[${i}].price" value="${item.price || ''}" required>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'services.options_carte.items\', {name:\'\', price:\'\'}, \'services-options\')">+ Ajouter une option à la carte</button>';
+            container.innerHTML = html;
+        }
+
+        function renderFaqItems() {
+            const container = document.getElementById('container-faq-items');
+            const items = globalCMSData.faq?.items || [];
+            let html = '<div>';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Question/Réponse #${i+1}</strong><button type="button" class="btn-delete" onclick="deleteItem('faq.items', ${i}, 'faq-items')">Supprimer</button></div>
+                        <label>Question posée (ou nom client)</label><input type="text" name="faq.items[${i}].q" value="${item.q || ''}" required>
+                        <label style="margin-top:0.5rem;">Réponse apportée (ou témoignage)</label><textarea name="faq.items[${i}].a" required>${item.a || ''}</textarea>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'faq.items\', {q:\'\', a:\'\'}, \'faq-items\')">+ Ajouter une ligne de FAQ / Témoignage</button>';
+            container.innerHTML = html;
+        }
+
+        function renderLegalSections() {
+            const container = document.getElementById('container-legal-sections');
+            const items = globalCMSData.legal?.sections || [];
+            let html = '<div>';
+            items.forEach((item, i) => {
+                html += `
+                    <div class="dynamic-item-card" style="border-left-color:#ff4d4d;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><strong>Volet Juridique : ${item.title || 'Sans titre'}</strong><button type="button" class="btn-delete" onclick="deleteItem('legal.sections', ${i}, 'legal-sections')">Supprimer ce volet</button></div>
+                        <label>Titre du volet institutionnel *</label><input type="text" name="legal.sections[${i}].title" value="${item.title || ''}" required>
+                        <label style="margin-top:0.5rem;">Corps de texte légal (Formattage HTML accepté) *</label><textarea name="legal.sections[${i}].content_html" style="min-height:200px;" required>${item.content_html || ''}</textarea>
+                    </div>`;
+            });
+            html += '</div><button type="button" class="btn-add" onclick="addItem(\'legal.sections\', {title:\'\', content_html:\'\'}, \'legal-sections\')">+ Ajouter un volet de texte légal (Mentions, Conditions, etc.)</button>';
+            container.innerHTML = html;
+        }
+
+        // --- ENTRAILLES STRUCTURELLES : ACTIONS DE MUTATION (AJOUT / SUPPRESSION) ---
+
+        function getNestedValue(obj, path) {
+            return path.split('.').reduce((acc, part) => acc && acc[part] !== undefined ? acc[part] : undefined, obj);
+        }
+
+        function setNestedValue(obj, path, value) {
+            const parts = path.split('.');
+            let current = obj;
+            for (let i = 0; i < parts.length - 1; i++) {
+                if (!current[parts[i]]) current[parts[i]] = {};
+                current = current[parts[i]];
+            }
+            current[parts[parts.length - 1]] = value;
+        }
+
+        function addItem(keyPath, templateObject, containerId, type = 'object') {
+            let arr = getNestedValue(globalCMSData, keyPath);
+            if (!Array.isArray(arr)) {
+                arr = [];
+                setNestedValue(globalCMSData, keyPath, arr);
+            }
+            arr.push(templateObject);
+            refreshCategory(containerId);
+        }
+
+        function deleteItem(keyPath, index, containerId, type = 'object') {
+            const arr = getNestedValue(globalCMSData, keyPath);
+            if (Array.isArray(arr)) {
+                arr.splice(index, 1);
+                refreshCategory(containerId);
+            }
+        }
+
+        function addSubItem(parentPath, parentIndex, subKey, defaultValue, containerId) {
+            const parentArr = getNestedValue(globalCMSData, parentPath);
+            if (parentArr && parentArr[parentIndex]) {
+                if (!parentArr[parentIndex][subKey]) parentArr[parentIndex][subKey] = [];
+                parentArr[parentIndex][subKey].push(defaultValue);
+                refreshCategory(containerId);
+            }
+        }
+
+        function deleteSubItem(parentPath, parentIndex, subKey, subIndex, containerId) {
+            const parentArr = getNestedValue(globalCMSData, parentPath);
+            if (parentArr && parentArr[parentIndex] && Array.isArray(parentArr[parentIndex][subKey])) {
+                parentArr[parentIndex][subKey].splice(subIndex, 1);
+                refreshCategory(containerId);
+            }
+        }
+
+        function refreshCategory(id) {
+            if (id === 'nav-links') renderNavLinks();
+            if (id === 'hero-ctas') renderHeroCtas();
+            if (id === 'hero-stats') renderHeroStats();
+            if (id === 'for-who-cards') renderStringList('container-for-who-cards', 'for_who.cards', 'Cartes Profils Territoriaux');
+            if (id === 'about-paragraphs') renderStringList('container-about-paragraphs', 'about.paragraphs', 'Paragraphes Présentation');
+            if (id === 'about-values') renderAboutValues();
+            if (id === 'proof-cards') renderProofCards();
+            if (id === 'process-steps') renderProcessSteps();
+            if (id === 'portfolio-sectors') renderStringList('container-portfolio-sectors', 'portfolio.sectors', 'Onglets de Filtrage');
+            if (id === 'portfolio-items') renderPortfolioItems();
+            if (id === 'services-items') renderServicesItems();
+            if (id === 'services-options') renderServicesOptions();
+            if (id === 'faq-items') renderFaqItems();
+            if (id === 'contact-reassurance') renderStringList('container-contact-reassurance', 'contact.reassurance', 'Lignes d\'engagements Agence');
+            if (id === 'contact-nextsteps') renderStringList('container-contact-nextsteps', 'contact.next_steps.items', 'Étapes de contact rapide');
+            if (id === 'legal-sections') renderLegalSections();
+        }
+
+        function populateStaticFields(data) {
+            document.querySelectorAll('input[name], textarea[name], select[name]').forEach(el => {
+                const nameAttr = el.getAttribute('name');
+                if (nameAttr.includes('[') || nameAttr.includes(']')) return; // Géré par le moteur dynamique
+                
+                const path = nameAttr.split('.');
+                let val = data;
+                for (const key of path) {
+                    if (val === undefined || val === null) break;
+                    val = val[key];
+                }
+                if (val !== undefined && val !== null) {
+                    el.value = val;
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/api/content');
+                if (response.ok) {
+                    globalCMSData = await response.json();
+                    
+                    // 1. Initialiser le pré-remplissage des champs plats
+                    populateStaticFields(globalCMSData);
+                    
+                    // 2. Déployer l'intégralité des 16 modules CRUD dynamiques
+                    renderNavLinks();
+                    renderHeroCtas();
+                    renderHeroStats();
+                    renderStringList('container-for-who-cards', 'for_who.cards', 'Cartes Profils Territoriaux');
+                    renderStringList('container-about-paragraphs', 'about.paragraphs', 'Paragraphes Présentation');
+                    renderAboutValues();
+                    renderProofCards();
+                    renderProcessSteps();
+                    renderStringList('container-portfolio-sectors', 'portfolio.sectors', 'Onglets de Filtrage');
+                    renderPortfolioItems();
+                    renderServicesItems();
+                    renderServicesOptions();
+                    renderFaqItems();
+                    renderStringList('container-contact-reassurance', 'contact.reassurance', 'Lignes d\'engagements Agence');
+                    renderStringList('container-contact-nextsteps', 'contact.next_steps.items', 'Étapes de contact rapide');
+                    renderLegalSections();
+                }
+            } catch (err) {
+                console.error("Erreur d'initialisation du panel d'administration :", err);
+            }
+        });
+    </script>
+</body>
+</html>

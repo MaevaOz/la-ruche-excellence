@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-content="meta.title"></title>
+    <!-- Méta-données -->
+    <meta name="description" data-attr="content:meta.description">
+    <meta name="keywords" data-attr="content:meta.keywords">
+    <meta name="author" data-attr="content:meta.author">
+    <meta name="theme-color" data-attr="content:meta.theme_color">
+    <link rel="canonical" data-attr="href:meta.canonical">
+    
+    <!-- Fichiers statiques et dynamiques -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <!-- Navbar Universelle -->
+    <nav class="navbar" id="navbar">
+        <a href="/" class="nav-logo">
+            <span data-content="nav.logo.text_principal" style="color: var(--bleu-abyssal)"></span><span data-content="nav.logo.sub"></span>
+        </a>
+        <div class="nav-links" data-list="nav.links" data-item="link">
+            <template>
+                <a class="nav-link" data-attr="href:link.url" data-content="link.label"></a>
+            </template>
+        </div>
+        <a href="/contact" class="btn-audit" data-content="hero.ctas[0].label" data-attr="href:hero.ctas[0].url"></a>
+    </nav>
+
+    <main>
+        <!-- Section Hero -->
+        <section class="hero">
+            <span class="hero-eyebrow" data-content="hero.eyebrow"></span>
+            <h1 data-content="hero.title_html"></h1>
+            <p data-content="hero.sub"></p>
+            <p data-content="hero.promise" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--vieil-or); margin-bottom: 3rem; font-weight: 600;"></p>
+            
+            <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-direction: column;">
+                <div data-list="hero.ctas" data-item="cta" style="display: flex; gap: 1rem;">
+                    <template>
+                        <a data-attr="href:cta.url" data-content="cta.label" class="btn-audit"></a>
+                    </template>
+                </div>
+                <!-- Badge Flottant -->
+                <div style="margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.75rem; background-color: var(--ecru); padding: 0.5rem 1.5rem; border: 1px solid var(--or-rgba);">
+                    <span style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--vieil-or);" data-content="hero.float_card.num"></span>
+                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: var(--bleu-abyssal);" data-content="hero.float_card.label"></span>
+                </div>
+            </div>
+            
+            <!-- Chiffres Clés -->
+            <div style="margin-top: 5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem;">
+                <div data-list="hero.stats" data-item="stat" style="display: flex; gap: 3rem; flex-wrap: wrap; justify-content: center;">
+                    <template>
+                        <div style="text-align: center; max-width: 250px;">
+                            <h2 style="font-size: 3rem; margin-bottom: 0.5rem;" data-content="stat.num"></h2>
+                            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--vieil-or); opacity: 1; font-weight: 600;" data-content="stat.label"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Notre Expertise -->
+        <section class="section section-alt">
+            <div class="section-header">
+                <span class="section-eyebrow" data-content="for_who.eyebrow"></span>
+                <h2 class="section-title" data-content="for_who.title_html"></h2>
+            </div>
+            <div class="grid" data-list="for_who.cards" data-item="profile">
+                <!-- Data-list peut gérer un tableau de chaînes de caractères si c'est la structure -->
+                <template>
+                    <div class="card" style="padding: 2.5rem; text-align: center;">
+                        <h3 style="color: var(--vieil-or); font-family: 'Inter', sans-serif; font-size: 2rem; margin-bottom: 1rem;">—</h3>
+                        <p data-content="profile" style="font-weight: 500; font-size: 1.1rem; line-height: 1.8;"></p>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Section Preuves & Engagements -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title" data-content="proof.title_html"></h2>
+            </div>
+            <div class="grid" data-list="proof.cards" data-item="eng">
+                <template>
+                    <div class="card" style="padding: 2.5rem; text-align: left;">
+                        <h3 data-content="eng.strong" style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--bleu-abyssal);"></h3>
+                        <p data-content="eng.p" style="margin-bottom: 0; opacity: 0.85; line-height: 1.6;"></p>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Section Aperçu Solutions -->
+        <section class="section section-alt">
+            <div class="section-header">
+                <h2 class="section-title" data-content="portfolio.title_html"></h2>
+                <p data-content="portfolio.sub" style="max-width: 600px; margin: 0 auto; font-size: 1.15rem; opacity: 0.8;"></p>
+            </div>
+            <div class="grid" data-list="portfolio.items" data-item="prod">
+                <template>
+                    <a data-attr="href:prod.url" class="card" style="display: block; position: relative; color: inherit; text-decoration: none; padding: 2.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <span class="badge" data-content="prod.sector" style="display: inline-block; margin-bottom: 1.5rem;"></span>
+                        <h3 data-content="prod.name" style="font-size: 1.5rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;"></h3>
+                        <p data-content="prod.desc" style="opacity: 0.8; margin-bottom: 0;"></p>
+                    </a>
+                </template>
+            </div>
+            <div style="text-align: center; margin-top: 5rem;">
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--bleu-abyssal); margin-bottom: 1.5rem;" data-content="portfolio.cta_text"></p>
+                <a href="/contact" class="btn-audit" data-content="portfolio.cta_btn_label"></a>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer Universel -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <span data-content="nav.logo.text_principal"></span><span data-content="nav.logo.sub"></span>
+                </div>
+                <p class="footer-desc" data-content="footer.desc"></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-content="footer.titles.navigation"></h4>
+                <ul data-list="nav.links" data-item="link">
+                    <template>
+                        <li><a data-attr="href:link.url" data-content="link.label"></a></li>
+                    </template>
+                </ul>
+            </div>
+            <div class="footer-col" style="min-width: 300px;">
+                <h4 data-content="footer.titles.contact"></h4>
+                <ul>
+                    <li data-content="contact.blocs.email"></li>
+                    <li data-content="contact.blocs.whatsapp"></li>
+                    <li style="margin-top: 2rem;">
+                         <a data-attr="href:contact.blocs.whatsapp_url" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid var(--vieil-or); padding-bottom: 0.25rem;" data-content="footer.labels.emergency"></a>
+                    </li>
+                </ul>
+                <h4 style="margin-top: 2rem; color: var(--vieil-or); font-size: 0.9rem; text-transform: uppercase;">Documents Légaux</h4>
+                <ul>
+                    <li><a href="/legal" style="opacity: 0.8; font-size: 0.9rem;">Mentions légales, RGPD & Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div style="flex-grow: 1;">
+                <span data-content="footer.bottom_left"></span>
+                <span style="opacity: 0.5; margin: 0 0.5rem;">|</span>
+                Site designé & structuré par <a href="https://maekiastudio.onrender.com" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); font-weight: 600;">MaEkia Studio</a>
+            </div>
+            <div data-content="footer.bottom_right" style="text-align: right; max-width: 50%;"></div>
+        </div>
+    </footer>
+</body>
+</html>

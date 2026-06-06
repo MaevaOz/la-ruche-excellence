@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-content="meta.title"></title>
+    <!-- Méta-données -->
+    <meta name="description" data-attr="content:meta.description">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="/" class="nav-logo">
+            <span data-content="nav.logo.text_principal" style="color: var(--bleu-abyssal)"></span><span data-content="nav.logo.sub"></span>
+        </a>
+        <div class="nav-links" data-list="nav.links" data-item="link">
+            <template>
+                <a class="nav-link" data-attr="href:link.url" data-content="link.label"></a>
+            </template>
+        </div>
+        <a href="/contact" class="btn-audit" data-content="hero.ctas[0].label" data-attr="href:hero.ctas[0].url"></a>
+    </nav>
+
+    <main style="padding-top: 12rem;">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-eyebrow" data-content="contact.header.eyebrow"></span>
+                <h1 class="section-title" data-content="contact.header.title_html" style="font-size: clamp(3rem, 5vw, 4.5rem);"></h1>
+                <p data-content="contact.header.sub" style="max-width: 600px; margin: 0 auto; font-size: 1.15rem; opacity: 0.8;"></p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 6rem; max-width: 1400px; margin: 0 auto; align-items: start;">
+                <!-- Informations Contact -->
+                <div>
+                    <div style="margin-bottom: 4rem;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--bleu-abyssal); margin-bottom: 2rem;" data-content="contact.blocs.title"></h3>
+                        <p style="font-size: 1.25rem; font-weight: 500; font-family: 'Playfair Display', serif; color: var(--vieil-or); margin-bottom: 0.5rem;" data-content="contact.blocs.email"></p>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--bleu-abyssal); margin-bottom: 1.5rem;" data-content="contact.blocs.whatsapp"></p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;" data-content="contact.blocs.delay"></p>
+                    </div>
+
+                    <div style="padding: 3rem; background-color: var(--blanc-celeste); border: 1px solid var(--or-rgba);">
+                        <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--bleu-abyssal); margin-bottom: 1.5rem;" data-content="contact.reassurance_title"></h4>
+                        <ul data-list="contact.reassurance" data-item="reas" style="list-style: none;">
+                            <template>
+                                <li style="margin-bottom: 1rem; position: relative; padding-left: 1.5rem; font-size: 0.9rem; opacity: 0.9;">
+                                    <span style="position: absolute; left: 0; color: var(--vieil-or); font-weight: bold;">—</span>
+                                    <span data-content="reas"></span>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Formulaire -->
+                <div style="background-color: #ffffff; padding: 4rem; border: 1px solid var(--or-rgba); box-shadow: 0 30px 60px -15px var(--abyssal-rgba);">
+                    <h3 data-content="contact.form.title" style="font-family: 'Playfair Display', serif; font-size: 2.25rem; color: var(--bleu-abyssal); margin-bottom: 1rem;"></h3>
+                    <p data-content="contact.form.sub" style="margin-bottom: 3rem; opacity: 0.8;"></p>
+
+                    <form class="contact-form" data-attr="action:contact.form.endpoint" method="POST">
+                        <div class="form-group">
+                            <label class="form-label" data-content="contact.form.labels.company"></label>
+                            <input type="text" name="company" class="form-input" required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div class="form-group">
+                                <label class="form-label" data-content="contact.form.labels.name"></label>
+                                <input type="text" name="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" data-content="contact.form.labels.email"></label>
+                                <input type="email" name="email" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-content="contact.form.labels.message"></label>
+                            <textarea name="message" class="form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-subscribe" style="margin-top: 1rem;" data-content="contact.form.submit_label"></button>
+                    </form>
+                    <p data-content="contact.form.note" style="margin-top: 1.5rem; font-size: 0.75rem; text-align: center; opacity: 0.5;"></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 6rem; width: 100%; border: 1px solid var(--or-rgba); padding: 1rem; background-color: var(--blanc-celeste); box-shadow: 0 30px 60px -15px var(--abyssal-rgba);">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7542940251703!2d9.44498521021487!3d0.3916962996024971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x107f3b610c149d8d%3A0xffd7b6b8b0e7d0f1!2sBoulevard%20de%20l&#39;Ind%C3%A9pendance%2C%20Libreville%2C%20Gabon!5e0!3m2!1sfr!2sfr!4v1717696200000!5m2!1sfr!2sfr" width="100%" height="450" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <div style="max-width: 900px; margin: 8rem auto 0; text-align: center;">
+                <span class="section-eyebrow" data-content="faq.header.eyebrow"></span>
+                <h2 class="section-title" data-content="faq.header.title_html"></h2>
+                
+                <div data-list="faq.items" data-item="f" style="text-align: left; margin-top: 4rem;">
+                    <template>
+                        <div style="margin-bottom: 2.5rem; border-bottom: 1px solid var(--or-rgba); padding-bottom: 2.5rem;">
+                            <h4 data-content="f.q" style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--bleu-abyssal); margin-bottom: 1rem;"></h4>
+                            <p data-content="f.a" style="opacity: 0.8; font-size: 1.05rem;"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <span data-content="nav.logo.text_principal"></span><span data-content="nav.logo.sub"></span>
+                </div>
+                <p class="footer-desc" data-content="footer.desc"></p>
+            </div>
+            <div class="footer-col">
+                <h4 data-content="footer.titles.navigation"></h4>
+                <ul data-list="nav.links" data-item="link">
+                    <template>
+                        <li><a data-attr="href:link.url" data-content="link.label"></a></li>
+                    </template>
+                </ul>
+            </div>
+            <div class="footer-col" style="min-width: 300px;">
+                <h4 data-content="footer.titles.contact"></h4>
+                <ul>
+                    <li data-content="contact.blocs.email"></li>
+                    <li data-content="contact.blocs.whatsapp"></li>
+                    <li style="margin-top: 2rem;">
+                         <a data-attr="href:contact.blocs.whatsapp_url" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 600; border-bottom: 1px solid var(--vieil-or); padding-bottom: 0.25rem;" data-content="footer.labels.emergency"></a>
+                    </li>
+                </ul>
+                <h4 style="margin-top: 2rem; color: var(--vieil-or); font-size: 0.9rem; text-transform: uppercase;">Documents Légaux</h4>
+                <ul>
+                    <li><a href="/legal" style="opacity: 0.8; font-size: 0.9rem;">Mentions légales, RGPD & Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div style="flex-grow: 1;">
+                <span data-content="footer.bottom_left"></span>
+                <span style="opacity: 0.5; margin: 0 0.5rem;">|</span>
+                Site designé & structuré par <a href="https://maekiastudio.onrender.com" target="_blank" rel="noopener noreferrer" style="color: var(--vieil-or); font-weight: 600;">MaEkia Studio</a>
+            </div>
+            <div data-content="footer.bottom_right" style="text-align: right; max-width: 50%;"></div>
+        </div>
+    </footer>
+</body>
+</html>
