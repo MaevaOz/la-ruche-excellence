@@ -626,76 +626,121 @@ footer {
 }
 
 /* ==========================================================================
-   AJUSTEMENT MOBILE CHIRURGICAL (MaEkia Studio)
+   CORRECTEUR RESPONSIVE SUR-MESURE (MaEkia Studio)
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* 1. L'en-tête : On force le logo et le gros bouton à s'empiler verticalement */
-    header, .header-container, [class*="header"] {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        padding: 15px !important;
-        height: auto !important;
+    /* 1. Sécurité anti-débordement horizontal */
+    html, body {
+        overflow-x: hidden !important;
         width: 100% !important;
-        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* On évite que le texte du logo "La Ruche Excellence" se coupe affreusement */
-    header h1, header .logo, header img {
-        font-size: 1.6rem !important;
-        white-space: nowrap !important; /* Empêche le logo de se casser sur 3 lignes */
-        margin-bottom: 15px !important;
-        width: auto !important;
+    /* 2. Fix de la Barre de Navigation (.navbar) */
+    .navbar {
+        position: static !important; /* Passe en flux normal pour ne pas chevaucher le contenu */
+        display: flex !important;
+        flex-direction: column !important; /* Aligne le logo au-dessus du bouton */
+        gap: 1.5rem !important;
+        padding: 1.5rem 5% !important;
+        height: auto !important;
     }
 
-    /* Le gros bouton bleu s'adapte sagement en dessous */
-    header div:has(a), header button, .header-btn {
+    .nav-logo {
+        font-size: 1.4rem !important;
+        text-align: center !important;
+    }
+
+    /* Désactive le menu classique qui n'a pas de toggle JS pour l'instant */
+    .nav-links {
+        display: none !important;
+    }
+
+    .btn-audit {
         width: 100% !important;
         max-width: 280px !important;
-        margin: 0 auto !important;
+        text-align: center !important;
+        padding: 0.8rem 1.5rem !important;
     }
 
-    /* 2. Alignement des sections et conteneurs principaux */
-    main, section, .container, .row, .grid {
+    /* 3. Redressement des Grilles et Mises en page (Contact & Produit) */
+    .grid, 
+    .product-detail-layout, 
+    .footer-grid,
+    .section,
+    main {
+        display: flex !important;
+        flex-direction: column !important; /* Force l'empilement vertical propre */
+        grid-template-columns: 1fr !important; /* Écrase le CSS Grid */
+        align-items: stretch !important; /* FIX DE LA GAUCHE : Aligne tout à gauche (0,0) pour que rien ne soit coupé ! */
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 4rem 5% !important; /* Des marges plus adaptées aux smartphones */
+        box-sizing: border-box !important;
+    }
+
+    /* On force les colonnes internes à occuper toute la largeur disponible */
+    .product-detail-layout > div,
+    .grid > div,
+    .footer-grid > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. Fix de la carte de prix sur la page produit (.conversion-block) */
+    .conversion-block {
+        position: relative !important; /* Annule le mode sticky/flottant d'ordinateur */
+        top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 2.5rem 1.5rem !important;
+        margin-top: 3rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .product-price {
+        font-size: 2.8rem !important; /* Légère réduction pour que le prix tienne sur une ligne */
+    }
+
+    /* 5. Fix du Formulaire de Contact (.contact-form) */
+    .contact-form {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+    }
+
+    .form-group {
+        width: 100% !important;
+    }
+
+    .form-input, 
+    .form-textarea, 
+    .search-input {
         width: 100% !important;
         max-width: 100% !important;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-        box-sizing: border-box !important;
+        box-sizing: border-box !important; /* Aligne parfaitement les bordures intérieures */
     }
 
-    /* 3. Les Cartes de Services, Produits et Historique (image_5 à image_8) */
-    .card, .product-card, .timeline-item, form {
-        width: 100% !important;
-        max-width: 360px !important; /* Taille parfaite pour un écran de téléphone */
-        margin: 20px auto !important;
-        box-sizing: border-box !important;
-        position: relative !important;
-    }
-
-    /* 4. RESET des petits éléments : On interdit aux badges dorés de faire 100% */
-    span, p, h1, h2, h3 {
+    /* 6. Remise en ordre des badges (Optionnel, au cas où) */
+    .badge {
+        position: absolute !important;
+        top: 1rem !important;
+        right: 1rem !important;
         width: auto !important;
-        max-width: 100% !important;
-        white-space: normal !important;
     }
 
-    /* On redonne leur forme initiale aux étiquettes dorées pour qu'elles ne bavent plus */
-    [class*="badge"], [class*="label"], .automobile, .year, .timeline-date {
-        width: max-content !important;
-        display: inline-block !important;
-        padding: 6px 20px !important;
-        margin: 0 auto !important;
+    /* 7. Footer Institutionnel */
+    footer {
+        padding: 4rem 5% 2rem !important;
     }
 
-    /* 5. Formulaire de contact (Champs propres qui ne dépassent plus) */
-    input, textarea, select {
-        width: 100% !important;
-        box-sizing: border-box !important;
+    .footer-bottom {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        text-align: center !important;
     }
 }
